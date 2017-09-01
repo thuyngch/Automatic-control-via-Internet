@@ -22,7 +22,7 @@
  *	Define
  *****************************************************************************/
 #define LOGF_NUM		10
-#define LOGF_LEN		1100
+#define LOGF_LEN		11000
 
 
 /******************************************************************************
@@ -35,9 +35,12 @@ void
 writeLogFile
 (char username[], char password[], bool result);
 
-// void
-// readLogFile
-// ();
+/*
+ *	Read information of login accesses from log file system.
+ */
+void
+readLogFile
+(uint8_t logfile_id);
 
 
 #endif /* LOGFILE_H_ */
