@@ -1,0 +1,356 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"is",
+				"isMatch"
+			],
+			[
+				"servi",
+				"service_idx"
+			],
+			[
+				"ser",
+				"service_idx"
+			],
+			[
+				"num",
+				"num_out"
+			],
+			[
+				"addr",
+				"addr_buff"
+			],
+			[
+				"frame",
+				"frameEncode"
+			],
+			[
+				"END",
+				"END2"
+			],
+			[
+				"da",
+				"data"
+			],
+			[
+				"START",
+				"START1"
+			],
+			[
+				"ar",
+				"argv"
+			],
+			[
+				"data",
+				"data_buff"
+			],
+			[
+				"sm_E",
+				"sm_Error"
+			],
+			[
+				"uint8",
+				"uint8_t"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/chinhthuy/Downloads/CCS7.2.0.00013_web_linux-x64/README_FIRST.txt",
+			"settings":
+			{
+				"buffer_size": 1820,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "ins",
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insall",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 457.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry",
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/embedded-shell",
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/embedded-shell/login",
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/lib"
+	],
+	"file_history":
+	[
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/embedded-shell/login/login.c",
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/embedded-shell/clientService/test.c",
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/embedded-shell/clientService/clientService.c",
+		"/home/chinhthuy/chinhthuy/ESD/blockDiagram/ClientService5968164159802993873.graphml",
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/lib/communication/communication.h",
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/lib/communication/communication.c",
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/lib/logfile/logfile.h",
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/lib/logfile/logfile.c",
+		"/home/chinhthuy/chinhthuy/ESD/github/raspberry/os-shell/os-shell",
+		"/home/chinhthuy/chinhthuy/ESD/github/tiva/tiva",
+		"/home/chinhthuy/Downloads/Cloud/Code/cloud.c",
+		"/home/chinhthuy/Downloads/Cloud/Code/hp_string.h",
+		"/home/chinhthuy/Downloads/login.txt",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/client_service/client_service.c",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/client_service/client_service.h",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/client_service/run",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/client_service/login/cliserv_login.c",
+		"/home/chinhthuy/.config/sublime-text-3/Packages/User/c.sublime-build",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/prj.sublime-project",
+		"/home/chinhthuy/.config/sublime-text-3/Packages/User/SublimeGDB.sublime-settings",
+		"/home/chinhthuy/.config/sublime-text-3/Packages/SublimeGDB/SublimeGDB.sublime-settings",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/frame/frame.h",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/frame/frame.c",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/main.c",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/matching.c",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/matching.h",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/frame/run",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/frame/main.c",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/accounts/123",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/accounts/567",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/accounts/678",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/accounts/789",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/accounts/890",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/accounts/901",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/accounts/456",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/accounts/345",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/accounts/234",
+		"/home/chinhthuy/chinhthuy/embedded_system_design/search/run",
+		"/home/chinhthuy/Xilinx/SDK/2017.2/bin/xsdk",
+		"/home/chinhthuy/.bashrc",
+		"/home/chinhthuy/Xilinx/Vivado_HLS/2017.2/bin/vivado_hls",
+		"/home/chinhthuy/Xilinx/Vivado/2017.2/bin/vivado",
+		"/home/chinhthuy/Xilinx/xsdk",
+		"/opt/Xilinx/SDK/2017.2/bin/xsdk",
+		"/opt/Xilinx/Vivado_HLS/2017.2/bin/vivado_hls",
+		"/opt/Xilinx/Vivado/2017.2/bin/vivado",
+		"/opt/Xilinx/Vivado/2017.2/bin/setupEnv.sh",
+		"/opt/Xilinx/Vivado/2017.2/bin/setEnv.sh",
+		"/home/chinhthuy/Desktop/install.sh",
+		"/home/chinhthuy/Desktop/test.py",
+		"/usr/bin/vivado",
+		"/home/chinhthuy/.config/sublime-text-3/Packages/User/python3.sublime-build",
+		"/home/chinhthuy/.config/sublime-text-3/Packages/User/python3.6.sublime-build",
+		"/home/chinhthuy/pycharm-community-2017.2.1/bin/pycharm.sh",
+		"/usr/share/applications/pycharm",
+		"/usr/share/applications/yading",
+		"/home/chinhthuy/.config/sublime-text-3/Packages/User/Terminal.sublime-settings"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"json_loads",
+			"load_json",
+			"sm_error",
+			"/",
+			"/loader",
+			"loader"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"sm_Error"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/chinhthuy/Downloads/CCS7.2.0.00013_web_linux-x64/README_FIRST.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1820,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1574,
+								1574
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 228.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 164.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/c.sublime-build",
+	"project": "ESD_rasp.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
