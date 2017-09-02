@@ -49,13 +49,20 @@ typedef enum
 /******************************************************************************
  *	Function
  *****************************************************************************/
+/*
+ *	Decode a data package to elements.
+ */
 bool frameDecode
 (uint8_t input, uint8_t *addr, uint8_t *fnc, uint8_t *num, uint8_t data[]);
 
 
+/*
+ *	Encode elements into a data package.
+ */
 void frameEncode
 (uint8_t addr, uint8_t fnc, uint8_t num_data, uint8_t data[],
  int *num_out, uint8_t output[]);
 
 
 #endif /* FRAME_H_ */
+

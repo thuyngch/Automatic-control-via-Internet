@@ -128,8 +128,7 @@ bool frameDecode
 	/* Return */
 	return false;
 }
-
-
+//-----------------------------------------------------------------------------
 /*
  *	Function: State machine of the [FrameDecode] module.
  *
@@ -172,4 +171,4 @@ void frameEncode
 	/* Number bytes of the output */
 	*num_out = i;
 }
-
+//-----------------------------------------------------------------------------
