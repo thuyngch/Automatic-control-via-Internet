@@ -5,6 +5,8 @@
 /******************************************************************************
  *	Include
  *****************************************************************************/
+#include <stdlib.h>
+
 #include "../clientService/clientService.h"
 
 #include <jansson.h>
@@ -43,14 +45,14 @@ static bool matching(char username[], char password[], char path_account[],
 					 int numfile, char **listfile)
 {
 	/* Declare */
-	bool isCorrect = false;
 	FILE *fp;
-	char path[80];
 	int i;
-	char key_out[JSON_LEN][LOGIN_LEN], val_out[JSON_LEN][LOGIN_LEN];
+	char 	tag_out[JSON_LEN][LOGIN_LEN],
+			val_out[JSON_LEN][LOGIN_LEN];
 	uint8_t num;
 
 	/* Scan for username */
+	bool isCorrect = false;
 	for(i = 0; i < numfile; i++)
 	{
 		if(!strcmp(username, listfile[i]))
@@ -63,13 +65,17 @@ static bool matching(char username[], char password[], char path_account[],
 	/* Scan for password */
 	if(isCorrect)
 	{
+		/* Open the file matched with [username] */
+		char *path = malloc(80);
 		sprintf(path, "%s%s.acc", path_account, listfile[i]);
 		if((fp = fopen(path, "r")) == NULL)
 		{
 			fprintf(stderr, "Cannot open file: %s\n", path);
 			return 0;
 		}
+		free(path);
 
+		/* Read content of file into a buffer */
 		fseek(fp, 0, SEEK_END);
 		uint32_t fsize = ftell(fp);
 		fseek(fp, 0, SEEK_SET);
@@ -79,14 +85,13 @@ static bool matching(char username[], char password[], char path_account[],
 		buffer[fsize] = 0;
 		fclose(fp);
 
+		/* Analyze the structure of JSON-file */
 		json_t *root = load_json(buffer);
 		free(buffer);
-		if(root)
-		{
-			print_json(root, key_out, val_out, &num);
-			json_decref(root);
-		}
+		print_json(root, tag_out, val_out, &num);
+		json_decref(root);
 
+		/* Compare the password */
 		if(!strcmp(password, val_out[1]))
 			isCorrect = true;
 		else
