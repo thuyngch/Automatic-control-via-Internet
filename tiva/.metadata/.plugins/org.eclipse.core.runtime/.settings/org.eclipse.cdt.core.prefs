@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+macros/workspace=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<macros>\n<stringMacro name\="Tivaware Library" type\="VALUE_PATH_DIR" value\="/home/chinhthuy/ti/Tivaware"/>\n<stringMacro name\="TM4C1294 Library" type\="VALUE_PATH_DIR" value\="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver"/>\n</macros>\n
 org.eclipse.cdt.core.formatter.alignment_for_arguments_in_method_invocation=18
 org.eclipse.cdt.core.formatter.alignment_for_assignment=16
 org.eclipse.cdt.core.formatter.alignment_for_base_clause_in_type_declaration=82

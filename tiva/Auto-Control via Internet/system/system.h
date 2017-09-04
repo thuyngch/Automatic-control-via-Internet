@@ -21,8 +21,8 @@
 /* Project */
 #include "../modules/pin_def.h"
 #include "../modules/actuator/actuator.h"
-//#include "../modules/keypad/keypad.h"
-//#include "../modules/lcd/"
+#include "../modules/keypad/keypad.h"
+#include "../modules/lcd/lcd.h"
 #include "../modules/wifi/wifi.h"
 
 

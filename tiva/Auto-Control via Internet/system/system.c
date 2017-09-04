@@ -20,8 +20,8 @@
 /* Modules of system */
 s_sysmod SystemModule[] = {
     {modid(Act)     , actSetup},
-//    {modid(Kp)      , kpSetup},
-//    {modid(Lcd)     , lcdSetup},
+    {modid(Kp)      , kpSetup},
+    {modid(Lcd)     , lcdSetup},
     {modid(Wifi)    , wifiSetup},
 };
 //-----------------------------------------------------------------------------

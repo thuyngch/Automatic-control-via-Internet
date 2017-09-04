@@ -17,6 +17,7 @@
 /* Driver */
 #include <GPIO.1.0.1.h>
 #include <UART.1.0.1.h>
+#include <TIMER.1.0.1.h>
 
 /* Project */
 #include "../pin_def.h"

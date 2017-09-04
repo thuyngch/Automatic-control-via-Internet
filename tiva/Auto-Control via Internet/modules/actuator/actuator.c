@@ -13,24 +13,13 @@
  *	Private
  *****************************************************************************/
 /*
- *  Function: Wait for an interval of delay.
+ *  Function:
  *
- *  Input   : interval: The delay interval.
+ *  Input   :
  *
- *  Output  : (bool): True if the delay interval is passed.
- *                    False if the delay interval is remaining.
+ *  Output  :
  */
-static bool waitDelay(uint32_t interval)
-{
-    /* Declare */
-    uint32_t i;
 
-    /* Timer */
-    for(i = 0; i < interval; i++);
-
-    /* Return */
-    return true;
-}
 //-----------------------------------------------------------------------------
 
 
@@ -48,6 +37,7 @@ bool actSetup()
 {
     gpioOutputSetup(ACT_PORT, ACT_PIN_ON | ACT_PIN_OFF);
     uartPrintf("[Actuator] module is enabled.\n");
+    return false;
 }
 //-----------------------------------------------------------------------------
 /*
@@ -63,13 +53,13 @@ void actServe(bool result, uint32_t interval)
     if(result)
     {
         gpioHigh(ACT_PORT, ACT_PIN_ON);
-        while(waitDelay(interval));
+        timerDelay(interval);
         gpioLow(ACT_PORT, ACT_PIN_ON);
     }
     else
     {
         gpioHigh(ACT_PORT, ACT_PIN_OFF);
-        while(waitDelay(interval));
+        timerDelay(interval);
         gpioLow(ACT_PORT, ACT_PIN_OFF);
     }
 }

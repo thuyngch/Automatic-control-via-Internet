@@ -20,11 +20,22 @@
 /* Project */
 #include "../pin_def.h"
 #include "esp.h"
+#include "frame.h"
 
 
 /******************************************************************************
  *	Definition
  *****************************************************************************/
+/* The device address */
+#define WIFI_ADDR_SERVER        0x00
+#define WIFI_ADDR               0x01
+
+/* Service: Login */
+#define WIFI_SERVICE_ANSWER     0x00
+#define WIFI_SERVICE_LOGIN      0x01
+
+/* Timeout in the ESP8266 setup */
+#define WIFI_TIMEOUT            65000
 
 
 /******************************************************************************
@@ -33,9 +44,27 @@
 /*
  *  Setup [WiFi] module.
  */
-bool
-wifiSetup
-();
+bool wifiSetup();
+
+/*
+ *  Send a data package.
+ */
+void wifiSendData(char *usr, char *pass);
+
+/*
+ *  Receive a data package.
+ */
+bool wifiRecData();
+
+/*
+ *  Interrupt of UART3, for getting received data.
+ */
+void UART3_Handler(void);
+
+/*
+ *  Interrupt of Timer0-subA, for timeout in ESP8266 setup.
+ */
+void TIMER0A_Handler();
 
 
 /******************************************************************************
@@ -49,3 +78,4 @@ static void wifiClearBuffer(uint8_t buff[], uint8_t len);
 
 
 #endif	/* WIFI_H_ */
+

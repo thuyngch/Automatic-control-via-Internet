@@ -1,0 +1,30 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../modules/wifi/esp.c \
+../modules/wifi/wifi.c 
+
+C_DEPS += \
+./modules/wifi/esp.d \
+./modules/wifi/wifi.d 
+
+OBJS += \
+./modules/wifi/esp.obj \
+./modules/wifi/wifi.obj 
+
+OBJS__QUOTED += \
+"modules/wifi/esp.obj" \
+"modules/wifi/wifi.obj" 
+
+C_DEPS__QUOTED += \
+"modules/wifi/esp.d" \
+"modules/wifi/wifi.d" 
+
+C_SRCS__QUOTED += \
+"../modules/wifi/esp.c" \
+"../modules/wifi/wifi.c" 
+
+

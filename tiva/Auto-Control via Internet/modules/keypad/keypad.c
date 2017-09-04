@@ -130,6 +130,18 @@ static	void	kpPassOvf(void)
  *	Public
  *****************************************************************************/
 /*
+ *  Function:
+ *
+ *  Input   :
+ *
+ *  Output  :
+ */
+bool kpSetup()
+{
+    return false;
+}
+//-----------------------------------------------------------------------------
+/*
  *	Input		:	None
  *	Output		:	Status of Setup
  *	Description	:	Setup Keypad

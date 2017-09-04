@@ -53,7 +53,7 @@
 		<link>
 			<name>lib/ti/driverlib.lib</name>
 			<type>1</type>
-			<locationURI>Tivaware/driverlib/ccs/Debug/driverlib.lib</locationURI>
+			<locationURI>PARENT-6-PROJECT_LOC/ti/Tivaware/driverlib/ccs/Debug/driverlib.lib</locationURI>
 		</link>
 		<link>
 			<name>lib/ti/uartstdio.c</name>
