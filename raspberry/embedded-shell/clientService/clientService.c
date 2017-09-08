@@ -86,6 +86,7 @@ void answerClient(uint8_t addr, uint8_t num, uint8_t data[])
 	frameEncode(addr, fnc_answer, num, data, &num_out, out);
 
 	/* Send to the client */
+	printf("Answer for client:\t");
 	printf("Number of bytes of the answer: %d\n", num_out);
 	for(int i = 0; i < num_out; i++)
 		printf("[%d] - %c\n", out[i], out[i]);

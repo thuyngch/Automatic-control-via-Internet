@@ -20,6 +20,7 @@
 
 /* Project */
 #include "../modules/pin_def.h"
+#include "../modules/icdi/icdi.h"
 #include "../modules/actuator/actuator.h"
 #include "../modules/keypad/keypad.h"
 #include "../modules/lcd/lcd.h"
@@ -32,10 +33,11 @@
 /* Modules of system */
 typedef enum
 {
-	modid_Act	= 0,
-	modid_Kp	= 1,
-	modid_Lcd	= 2,
-	modid_Wifi	= 3,
+    modid_Icdi  = 0,
+	modid_Act	= 1,
+	modid_Kp	= 2,
+	modid_Lcd	= 3,
+	modid_Wifi	= 4,
 } e_modid;
 #define	modid(x)	(modid_##x)
 

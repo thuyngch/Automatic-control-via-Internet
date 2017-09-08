@@ -1,0 +1,24 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../modules/icdi/icdi.c 
+
+C_DEPS += \
+./modules/icdi/icdi.d 
+
+OBJS += \
+./modules/icdi/icdi.obj 
+
+OBJS__QUOTED += \
+"modules/icdi/icdi.obj" 
+
+C_DEPS__QUOTED += \
+"modules/icdi/icdi.d" 
+
+C_SRCS__QUOTED += \
+"../modules/icdi/icdi.c" 
+
+

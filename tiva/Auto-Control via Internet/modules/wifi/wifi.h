@@ -19,6 +19,7 @@
 
 /* Project */
 #include "../pin_def.h"
+#include "../icdi/icdi.h"
 #include "esp.h"
 #include "frame.h"
 
@@ -35,7 +36,11 @@
 #define WIFI_SERVICE_LOGIN      0x01
 
 /* Timeout in the ESP8266 setup */
-#define WIFI_TIMEOUT            65000
+#define WIFI_TIMEOUT            1200000
+
+/* IP address and Port of the server */
+#define WIFI_SERVER_IP          "192.168.100.19"
+#define WIFI_SERVER_PORT        8000
 
 
 /******************************************************************************
@@ -74,7 +79,7 @@ static void espSetupProtocol();
 static bool wifiCheckATCmdComplete(char* strCheck);
 static void wifiStartTimerCount(uint32_t timeout);
 static void wifiStopTimerCount(void);
-static void wifiClearBuffer(uint8_t buff[], uint8_t len);
+static uint8_t wifiClearBuffer(uint8_t buff[], uint8_t len, uint8_t start);
 
 
 #endif	/* WIFI_H_ */

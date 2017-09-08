@@ -21,6 +21,7 @@
 
 /* Project */
 #include "../pin_def.h"
+#include "../icdi/icdi.h"
 
 
 /******************************************************************************
@@ -35,17 +36,19 @@
 /*
  *  Setup [Actuator] module.
  */
-bool
-actSetup
-();
+bool actSetup();
 
 
 /*
  *  [Actuator] module serves for requests.
  */
-void
-actServe
-(bool result, uint32_t interval);
+void actServe(bool result, uint32_t interval);
+
+
+/*
+ *  Idle state.
+ */
+void actIdle();
 
 
 #endif	/* ACTUATOR_H_ */

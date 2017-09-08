@@ -48,19 +48,25 @@ static void espSetupProtocol(uint32_t timeout)
         wifiStartTimerCount(timeout);
 
     /* Connect to Access-Point */
-    espConnectWifi("user-name", "password");
+    espConnectWifi("Hoi-gay-kin-tang-8", "lebaloc8197");
     wifiStartTimerCount(timeout);
     while(!wifiCheckATCmdComplete("OK"))
         wifiStartTimerCount(timeout);
 
     /* Mode of connection */
-    espMultiConnection();
-    wifiStartTimerCount(timeout);
-    while(!wifiCheckATCmdComplete("OK"))
-        wifiStartTimerCount(timeout);
+//    espMultiConnection();
+//    wifiStartTimerCount(timeout);
+//    while(!wifiCheckATCmdComplete("OK"))
+//        wifiStartTimerCount(timeout);
 
     /* Configure server */
-    espMakeServer(8000);
+//    espMakeServer(8000);
+//    wifiStartTimerCount(timeout);
+//    while(!wifiCheckATCmdComplete("OK"))
+//        wifiStartTimerCount(timeout);
+
+    /* Connect to the server */
+    espConnectTCP(WIFI_SERVER_IP, WIFI_SERVER_PORT);
     wifiStartTimerCount(timeout);
     while(!wifiCheckATCmdComplete("OK"))
         wifiStartTimerCount(timeout);
@@ -81,12 +87,28 @@ static void espSetupProtocol(uint32_t timeout)
  */
 static bool wifiCheckATCmdComplete(char* strCheck)
 {
+    /* Declare */
+    char *ch;
+    uint8_t pos = 0;
+
+    /* Wait */
     while(!sRegState.Null);                 // While unless matching '\0'
     wifiStopTimerCount();                   // Stop Timer count
     sRegState.Null = false;                 // Reset [Null] field
-    wifiClearBuffer(wifiBuff, buffCount);   // Clear buffer
-    buffCount = 0;                          // Reset counter of buffer
-    return strstr((char*)wifiBuff, strCheck);
+
+    /* Find for string */
+DO_AGAIN:
+    ch = strstr((char*)(wifiBuff + pos), strCheck);
+
+    /* Reset */
+    pos = wifiClearBuffer(wifiBuff, buffCount, pos);
+    if(pos >= buffCount)
+        buffCount = 0;
+    else
+        goto DO_AGAIN;
+
+    /* Return */
+    return (bool)ch;
 }
 //-----------------------------------------------------------------------------
 /*
@@ -98,8 +120,8 @@ static bool wifiCheckATCmdComplete(char* strCheck)
  */
 static void wifiStartTimerCount(uint32_t timeout)
 {
-    TimerLoadSet(TIMER0, TIMER_A, timeout);
-    TimerEnable(TIMER0, TIMER_A);
+    TimerLoadSet(WIFI_TIMER, WIFI_TIMER_SUB, timeout);
+    TimerEnable(WIFI_TIMER, WIFI_TIMER_SUB);
 }
 //-----------------------------------------------------------------------------
 /*
@@ -111,7 +133,7 @@ static void wifiStartTimerCount(uint32_t timeout)
  */
 static void wifiStopTimerCount(void)
 {
-    TimerDisable(TIMER0, TIMER_A);
+    TimerDisable(WIFI_TIMER, WIFI_TIMER_SUB);
 }
 //-----------------------------------------------------------------------------
 /*
@@ -121,11 +143,15 @@ static void wifiStopTimerCount(void)
  *
  *  Output  :
  */
-static void wifiClearBuffer(uint8_t buff[], uint8_t len)
+static uint8_t wifiClearBuffer(uint8_t buff[], uint8_t len, uint8_t start)
 {
     uint8_t i;
-    for(i = 0; i < len; i++)
-        buff[i] = 0;
+    for(i = start; i < len; i++)
+        if(buff[i] != 0)
+            buff[i] = 0;
+        else
+            return i+1;
+    return len;
 }
 //-----------------------------------------------------------------------------
 /*
@@ -147,7 +173,7 @@ static void wifiClearBuffer(uint8_t buff[], uint8_t len)
  *
  *	Input	:	(void).
  *
- *	Output	:	(void).
+ *	Output	:	(bool).
  */
 bool wifiSetup()
 {
@@ -159,13 +185,13 @@ bool wifiSetup()
     uartSetup(ui32ClkFreq, WIFI_MODULE, 115200, UART_INT_RT | UART_INT_RX);
 
     /* Setup timer */
-    timerSetup(TIMER0, TIMER_A, TIMER_CFG_PERIODIC_UP, true, 1, WIFI_TIMEOUT);
+    timerSetup(WIFI_TIMER, WIFI_TIMER_SUB, TIMER_CFG_PERIODIC_UP, true, 1, WIFI_TIMEOUT);
 	
 	/* ESP8266 setup */
     espSetupProtocol(WIFI_TIMEOUT);
 
 	/* Notify */
-	uartPrintf("[WiFi] module is enabled.\n");
+	icdiSendStr(">>> [WiFi] module is enabled.\n");
 
 	/* If no error, return false */
     sRegState.isSetup = false;
@@ -243,14 +269,21 @@ WAIT:
  */
 void UART3_Handler(void)
 {
+    /* Declare */
+    char rec;
+
     /* Clear interrupt */
     UARTIntClear(WIFI_MODULE, UART_INT_RX | UART_INT_RT);
     sRegState.flgUartInt = true;
 
+    /* Send received data into ICDI */
+    rec = uartGetChar(WIFI_MODULE);
+    icdiSendChar(rec);
+
     /* Setup progress */
     if(sRegState.isSetup)
     {
-        wifiBuff[buffCount] = uartGetChar(UART3);
+        wifiBuff[buffCount] = rec;
         if(wifiBuff[buffCount++] == '\0')
             sRegState.Null = true;
         else
@@ -259,7 +292,7 @@ void UART3_Handler(void)
 
     /* Serving progress */
     else
-        wifiBuff[buffCount++] = uartGetChar(UART3);
+        wifiBuff[buffCount++] = rec;
 }
 //-----------------------------------------------------------------------------
 /*
@@ -272,7 +305,7 @@ void UART3_Handler(void)
 void TIMER0A_Handler()
 {
     sRegState.Null = true;  // Overflow, escape the loop
-    timerIntExit(TIMER0, TIMER_A);
+    timerIntExit(WIFI_TIMER, WIFI_TIMER_SUB);
 }
 //-----------------------------------------------------------------------------
 

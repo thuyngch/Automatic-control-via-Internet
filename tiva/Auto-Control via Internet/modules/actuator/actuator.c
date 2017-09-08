@@ -35,8 +35,9 @@
  */
 bool actSetup()
 {
-    gpioOutputSetup(ACT_PORT, ACT_PIN_ON | ACT_PIN_OFF);
-    uartPrintf("[Actuator] module is enabled.\n");
+    gpioOutputSetup(ACT_PORT, ACT_PIN_1);
+    gpioOutputSetup(ACT_PORT, ACT_PIN_2);
+    icdiSendStr(">>> [Actuator] module is enabled.\n");
     return false;
 }
 //-----------------------------------------------------------------------------
@@ -52,15 +53,27 @@ void actServe(bool result, uint32_t interval)
 {
     if(result)
     {
-        gpioHigh(ACT_PORT, ACT_PIN_ON);
+        gpioHigh(ACT_PORT, ACT_PIN_1);
         timerDelay(interval);
-        gpioLow(ACT_PORT, ACT_PIN_ON);
+        gpioLow(ACT_PORT, ACT_PIN_1);
     }
     else
     {
-        gpioHigh(ACT_PORT, ACT_PIN_OFF);
+        gpioHigh(ACT_PORT, ACT_PIN_2);
         timerDelay(interval);
-        gpioLow(ACT_PORT, ACT_PIN_OFF);
+        gpioLow(ACT_PORT, ACT_PIN_2);
     }
+}
+//-----------------------------------------------------------------------------
+/*
+ *  Function: [Actuator] is in the Idle mode.
+ *
+ *  Input   : (void).
+ *
+ *  Output  : (void).
+ */
+void actIdle()
+{
+    gpioToggle(ACT_PORT, ACT_PIN_2);
 }
 //-----------------------------------------------------------------------------

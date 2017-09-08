@@ -19,9 +19,10 @@
  *****************************************************************************/
 /* Modules of system */
 s_sysmod SystemModule[] = {
+    {modid(Icdi)    , icdiSetup},
     {modid(Act)     , actSetup},
-    {modid(Kp)      , kpSetup},
-    {modid(Lcd)     , lcdSetup},
+//    {modid(Kp)      , kpSetup},
+//    {modid(Lcd)     , lcdSetup},
     {modid(Wifi)    , wifiSetup},
 };
 //-----------------------------------------------------------------------------
@@ -50,6 +51,9 @@ bool systemSetup()
 {
     /* Declare */
     uint8_t i, num;
+
+    /* Setup clock */
+    clkSetup(CLK_SRC_MAIN, CLK_PLL_ON, CLK_FREQ_120MHZ);
 
     /* Number of modules */
     num = sizeof(SystemModule) / sizeof(s_sysmod);
