@@ -64,17 +64,17 @@ while(1)
 	//-Get data-//
 	connfd = waitDataSocket(listenfd, buff, EMBEDDED_BUFF_LEN);
 	printf(">>> Received data: %s\n\n", buff);
-	// clearBuffer(buff, EMBEDDED_BUFF_LEN);
+	clearBuffer(buff, EMBEDDED_BUFF_LEN);
 
 	//-Decode frame and serve for client-//
-	for(int i = 0; i < numRec; i++)
-	{
-		if(frameDecode(buff[i], &addr, &fnc, &num, data))
-		{
-			serveClient(addr, fnc, num, data);
-			break;
-		}
-	}
+	// for(int i = 0; i < numRec; i++)
+	// {
+	// 	if(frameDecode(buff[i], &addr, &fnc, &num, data))
+	// 	{
+	// 		serveClient(addr, fnc, num, data);
+	// 		break;
+	// 	}
+	// }
 
 	//-Close the connection-//
 	closeConnection(connfd);

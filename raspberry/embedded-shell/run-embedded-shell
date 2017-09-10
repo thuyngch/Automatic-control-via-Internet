@@ -1,5 +1,4 @@
-#!/bin/sh
-
+#! /bin/sh
 # Compile
 gcc -g -o embedded-shell	embedded-shell.c  						\
 							clientService/clientService.c  			\

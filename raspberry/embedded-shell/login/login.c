@@ -28,7 +28,7 @@
  *	Private
  *****************************************************************************/
 /* Path of account-database */
-static char path_account[] = "kernel/accounts/";
+static char path_account[] = "kernel/accounts/user/";
 
 /* Extension */
 static char extension[] = ".acc";

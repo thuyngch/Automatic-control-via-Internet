@@ -51,12 +51,12 @@
 			<locationURI>PARENT-4-PROJECT_LOC/ccs/TM4C1294NCPDT/lib/version%201.0.1/driver/UART.1.0.1.c</locationURI>
 		</link>
 		<link>
-			<name>lib/ti/driverlib.lib</name>
+			<name>lib/driverlib.lib</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/ti/Tivaware/driverlib/ccs/Debug/driverlib.lib</locationURI>
 		</link>
 		<link>
-			<name>lib/ti/uartstdio.c</name>
+			<name>lib/uartstdio.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/ti/Tivaware/utils/uartstdio.c</locationURI>
 		</link>
