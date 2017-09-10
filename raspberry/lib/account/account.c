@@ -1,41 +1,32 @@
 /*
- *	Date	: 26/08/2017.
+ *	Date	: 10/09/2017.
  *	Content	: .
  */
 /******************************************************************************
  *	Include
  *****************************************************************************/
-#include <stdlib.h>
-
-#include "../clientService/clientService.h"
-
-#include <jansson.h>
-#include "../../lib/json/json.h"
-
-#include "../../lib/frame/frame.h"
-#include "../../lib/logfile/logfile.h"
-#include "../../lib/fileproc/fileproc.h"
+#include "account.h"
 
 
 /******************************************************************************
- *	Define
+ *	Definition
  *****************************************************************************/
-/* Length of username and password */
-#define USER_LEN	256
+#define		ADMIN_NUM		1
 
 
 /******************************************************************************
  *	Private
  *****************************************************************************/
 /* Path of account-database */
-static char path_account[] = "kernel/accounts/";
+static char path_account[] = "kernel/accounts/admin/";
 
-/* Extension */
+/* Extension of account file */
 static char extension[] = ".acc";
+
 
 //-----------------------------------------------------------------------------
 /*
- *	Function: 
+ *	Function:
  *
  *	Input	: 	
  *
@@ -108,50 +99,40 @@ static bool matching(char username[], char password[], char path_account[],
  *	Function
  *****************************************************************************/
 /*
- *	Function: Service [Login].
+ *	Function:
  *
  *	Input	: 	
  *
  *	Output	:	
  */
-void login(uint8_t num, uint8_t data[], uint8_t *num_out, uint8_t out[])
+bool compareAdminAccount(char *usr, char *pass)
 {
 	/* Declare */
-	char username[LOGIN_LEN], password[LOGIN_LEN];
-	bool isUsrname = true;
-	int j = 0;
-
-	/* Get username and password */
-	for(int i = 0; i < num; i++)
-	{
-		if(isUsrname && (data[i] !=  0))
-			username[j++] = data[i];
-		else
-		{
-			isUsrname = false;
-			if(data[i] !=  0)
-				password[i-j-1] = data[i];
-		}
-	}
-	username[j] = 0;
-	password[num-j-1] = 0;
-
-	/* Search for the result */
 	int numfile = 0;
-	char *listfile[USER_LEN];
+	char *listfile[ADMIN_NUM];
+	bool ret;
 
+	/* Adapt path */
 	char *path_adapt = malloc(70);
 	pathAdapt(path_account, path_adapt);
 
+	/* Compare */
 	numfile = getListOfFile(path_adapt, extension, listfile);
-	out[0] = (uint8_t)matching(username, password, path_adapt, numfile, listfile);
-	*num_out = 1;
+	ret = matching(usr, pass, path_adapt, numfile, listfile);
 
 	/* Free cache */
 	freeCache(listfile, numfile);
 	free(path_adapt);
 
-	/* Save information into [log_file] */
-	writeLogFile(username, password, out[0]);
+	/* Return */
+	return ret;
 }
+//-----------------------------------------------------------------------------
+/*
+ *	Function:
+ *
+ *	Input	: 	
+ *
+ *	Output	:	
+ */
 //-----------------------------------------------------------------------------
