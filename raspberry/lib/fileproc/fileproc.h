@@ -81,9 +81,12 @@ void json_create( char *fold_dir, const char *extension,
  *	
  */
 void createFolder(char *path);
+<<<<<<< HEAD
 /*
  *	
  */
+=======
+>>>>>>> 83f486f8bdc12ca648a3a00c6881130a887e2ef6
 bool isEmptyFolder(const char *folderDir);
 /*
  *	
