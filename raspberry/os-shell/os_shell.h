@@ -17,14 +17,16 @@
 #include "../lib/hplib/strproc.h"
 #include "../lib/hplib/filesystem.h"
 //#include "../lib/fileproc/fileproc.h"
-#include "../lib/communication/communication.h"
 #include "../lib/frame/frame.h"
+#include "../lib/platform/thread.h"
 // #include "../lib/json/json.h"
+#include "../lib/communication/communication.h"
+#include "../embedded-shell/embedded_shell.h"
+#include "./serverService/backup.h"
 
 /*
 * os-shell
 */
-void 
-*os_shell();
+void *os_shell(void *thread_exit);
 
 #endif

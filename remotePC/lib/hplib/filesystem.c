@@ -91,7 +91,7 @@ void createFolder(char *path)
 	if ( stat(path, &folinfo) == -1 ) { mkdir(path, 0700); }
 }
 
-bool createNewFile(char *folderpath, char *filename, const char *extension, const char *ifany_path)
+bool createNewEmptyFile(char *folderpath, char *filename, const char *extension, const char *ifany_path)
 {
 	switch (*ifany_path)
 	{

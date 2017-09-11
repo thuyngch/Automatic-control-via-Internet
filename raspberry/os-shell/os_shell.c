@@ -10,22 +10,12 @@
 #define 	OS_PORT 			8000
 #define 	OS_NUM_CLIENT		1
 
-
-/******************************************************************************
- *	Function
- *****************************************************************************/
-void clearBuffer(uint8_t *buff, uint16_t len)
-{
-	for (int i = 0; i < len; ++i) buff[i] = 0;
-}
-
-
 /******************************************************************************
  *	MAIN
  *****************************************************************************/
-void 
-*os_shell(void *thread_exit)
+void *os_shell(void *thread_exit)
 {
+	fprintf(stderr, "%s\n", "os_shell here");
 	/* Declare */
 	uint8_t buff[OS_BUFF_LEN];
 	uint8_t addr, fnc, num;
@@ -34,17 +24,19 @@ void
 	int connfd; //after client's connection accepted
 
 	/* Setup */
-	listenfd = createSocket(OS_PORT, OS_NUM_CLIENT);
+	listenfd = createServerSocket(OS_PORT, OS_NUM_CLIENT);
 	getIPAddr(buff);
-	printf(">>> Server is established:{IP: %s, Port: %d}\n\n", buff, OS_PORT);
+	printf(">>> Server for administrators is established on: {IP: %s, Port: %d}\n\n", buff, OS_PORT);
 	clearBuffer(buff, OS_BUFF_LEN);
 
 	while(1)
 	{
 		//-et data//
-		connfd = waitDataSocket(listenfd, buff, EMBEDDED_BUFF_LEN);
+		connfd = waitDataSocket(listenfd, buff, OS_BUFF_LEN);
 		printf(">>> Received data: %s\n\n", buff);
-		clearBuffer(buff, EMBEDDED_BUFF_LEN);
+		clearBuffer(buff, OS_BUFF_LEN);
+
+		backup(connfd);
 
 		//Decode frame and serve for admin//
 		// for(int i = 0; i < numRec; i++)
@@ -59,7 +51,8 @@ void
 		//Close the os-shell connection//
 		closeConnection(connfd);
 	}	
+	
 	/*cancel os-shell thread*/
-	pthread_exit(">>> os_shell exited ...");
+	exitThread(">>> os_shell exited ...");
 }
 
