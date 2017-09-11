@@ -7,6 +7,7 @@
 *************************************************************/
 
 #include "platform.h"
+#include "../embedded-shell/embedded_shell.h"
 
 void *platform(void *thread_exit)
 {
@@ -16,7 +17,7 @@ void *platform(void *thread_exit)
 
 	/*create threads here*/
 	if(createThread(&os_shell_thread, os_shell, thread_exit)) exit(1);
-	if(createThread(&embedded_shell_thread, embedded_shell, thread_exit)) exit(1);
+	//if(createThread(&embedded_shell_thread, embedded_shell, thread_exit)) exit(1);
 
 	/*cancel platform thread*/
 	pthread_exit("Platform terminated");

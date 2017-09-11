@@ -2,7 +2,7 @@
 
 /*
 *	FUNCTION: 	create a new thread
-*	Input:	Thread, callback, return buffer
+*	Input:		Thread, callback, return buffer
 *	Output: 	Thread created
 */
 
@@ -11,5 +11,15 @@ createThread(pthread_t *thread,  void *(*start_routine) (void *), void *thread_e
 {
 	if(pthread_create(thread, NULL, start_routine, thread_exit)) return false;
 	return true;
+}
+
+/*
+*	FUNCTION: 	exit thread and return a message
+*	Input:		const message
+*	Output: 	cancel thread, message->thread_exit variable
+*/
+void exitThread(char const *message)
+{
+	pthread_exit((void*)message);
 }
 

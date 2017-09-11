@@ -19,6 +19,7 @@
 //#include "../lib/fileproc/fileproc.h"
 #include "../lib/communication/communication.h"
 #include "../lib/frame/frame.h"
+#include "../lib/platform/thread.h"
 // #include "../lib/json/json.h"
 
 /*
