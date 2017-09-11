@@ -1,0 +1,24 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../modules/keypad/keypad.c 
+
+C_DEPS += \
+./modules/keypad/keypad.d 
+
+OBJS += \
+./modules/keypad/keypad.obj 
+
+OBJS__QUOTED += \
+"modules/keypad/keypad.obj" 
+
+C_DEPS__QUOTED += \
+"modules/keypad/keypad.d" 
+
+C_SRCS__QUOTED += \
+"../modules/keypad/keypad.c" 
+
+

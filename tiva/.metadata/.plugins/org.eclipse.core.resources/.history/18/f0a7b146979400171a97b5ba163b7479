@@ -1,0 +1,41 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Each subdirectory must supply rules for building sources it contributes
+lib/CLK.1.0.1.obj: /home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version\ 1.0.1/driver/CLK.1.0.1.c $(GEN_OPTS) | $(GEN_HDRS)
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM Compiler'
+	"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet.git/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="lib/CLK.1.0.1.d" --obj_directory="lib" $(GEN_OPTS__FLAG) "$(shell echo $<)"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+lib/GPIO.1.0.1.obj: /home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version\ 1.0.1/driver/GPIO.1.0.1.c $(GEN_OPTS) | $(GEN_HDRS)
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM Compiler'
+	"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet.git/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="lib/GPIO.1.0.1.d" --obj_directory="lib" $(GEN_OPTS__FLAG) "$(shell echo $<)"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+lib/LAUNCHPAD.1.0.1.obj: /home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version\ 1.0.1/driver/LAUNCHPAD.1.0.1.c $(GEN_OPTS) | $(GEN_HDRS)
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM Compiler'
+	"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet.git/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="lib/LAUNCHPAD.1.0.1.d" --obj_directory="lib" $(GEN_OPTS__FLAG) "$(shell echo $<)"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+lib/TIMER.1.0.1.obj: /home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version\ 1.0.1/driver/TIMER.1.0.1.c $(GEN_OPTS) | $(GEN_HDRS)
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM Compiler'
+	"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet.git/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="lib/TIMER.1.0.1.d" --obj_directory="lib" $(GEN_OPTS__FLAG) "$(shell echo $<)"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+lib/UART.1.0.1.obj: /home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version\ 1.0.1/driver/UART.1.0.1.c $(GEN_OPTS) | $(GEN_HDRS)
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM Compiler'
+	"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet.git/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="lib/UART.1.0.1.d" --obj_directory="lib" $(GEN_OPTS__FLAG) "$(shell echo $<)"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

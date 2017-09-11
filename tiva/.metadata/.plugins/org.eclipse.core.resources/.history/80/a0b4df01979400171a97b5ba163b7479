@@ -1,0 +1,24 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../modules/actuator/actuator.c 
+
+C_DEPS += \
+./modules/actuator/actuator.d 
+
+OBJS += \
+./modules/actuator/actuator.obj 
+
+OBJS__QUOTED += \
+"modules/actuator/actuator.obj" 
+
+C_DEPS__QUOTED += \
+"modules/actuator/actuator.d" 
+
+C_SRCS__QUOTED += \
+"../modules/actuator/actuator.c" 
+
+
