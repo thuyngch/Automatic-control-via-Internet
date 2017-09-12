@@ -32,7 +32,7 @@ int createServerSocket(int port, uint8_t numClient)
         /* Create a socket */
         listenfd = socket(AF_INET, SOCK_STREAM, 0);
         serv_addr.sin_family = AF_INET;
-        serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+        serv_addr.sin_addr.s_addr = inet_addr(INADDR_ANY);//htonl(INADDR_ANY);
         serv_addr.sin_port = htons(port); 
 
         /* Server bind */
