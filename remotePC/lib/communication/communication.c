@@ -61,9 +61,9 @@ int createClientSocket(const char *ip, int port)
 
         /* Create a socket */
         connfd = socket(AF_INET, SOCK_STREAM, 0);
-        caddr.sin_family= AF_INET;
-        caddr.sin_addr.s_addr= inet_addr(ip);
-        caddr.sin_port= htons(port);
+        client_addr.sin_family= AF_INET;
+        client_addr.sin_addr.s_addr= inet_addr(ip);
+        client_addr.sin_port= htons(port);
         /*require connection to server*/
         if(connect(connfd, (struct sockaddr*) &client_addr, sizeof(client_addr))) exit(1);
         fprintf(stderr, "%s\n", "You are connected to Server");
@@ -90,7 +90,8 @@ int waitDataSocket(int listenfd, uint8_t *buffer, uint16_t len)
 	connfd = accept(listenfd, (struct sockaddr*)NULL, NULL);
 
 	/* Read data package into buffer */
-	read(connfd, buffer, len);
+
+	//read(connfd, buffer, len);adhifsdafjaldfjsdalfjlfjalfjdalfjflajsldfjaslfjadlfjadflj
 
 	/* Return */
 	return connfd;
