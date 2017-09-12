@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="//-----------------------------------------------------------------------------" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="//-------------------------------------------------------------------------------------------------"/>
+			<item value="edmcKp"/>
+			<item value="edmcKpBtn_"/>
+			<item value="tKpBtn"/>
+			<item value="UART"/>
+			<item value="PA0"/>
+			<item value="PA5"/>
+			<item value="TIMER_A"/>
+		</list>
+		<list key="replacehistory">
+			<item value="//-----------------------------------------------------------------------------"/>
+			<item value="kp"/>
+			<item value="kpBtn_"/>
+			<item value="t_KpBtn"/>
+			<item value="WIFI_TIMER_SUB"/>
+			<item value="WIFI_TIMER"/>
+			<item value="WIFI_TIMEOUT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="337" key="DIALOG_WIDTH"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="574" key="DIALOG_HEIGHT"/>
+		<item value="369" key="DIALOG_X_ORIGIN"/>
+		<item value="71" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>
