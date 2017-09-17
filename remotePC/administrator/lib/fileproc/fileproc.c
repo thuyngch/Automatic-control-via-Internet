@@ -193,16 +193,16 @@ void readallfile(char *filedir, char *retstr)
 
 
 /************************************************************************************************
-*	FUNCTION: CREATE JSON STRUCTURE FILE									*
-*	Input:  6 arguments													*
-*	Output: json file 	 											*
-*	Additional requires: 												*
+*	FUNCTION: CREATE JSON STRUCTURE FILE									
+*	Input:  6 arguments												
+*	Output: json file 	 											
+*	Additional requires: 												
 ************************************************************************************************/
 void json_create(char *fold_dir, const char *extension, char *key_1, char *val_string_1,
 			char *key_2,  char *val_string_2)
 			//("exampledir", ".acc", "account", "123", "password", "123")
 {
-	char *path;
+	char path[64];
 	strcpy(path, fold_dir);
 	strcat(path, val_string_1); 
 	strcat(path, extension);
@@ -230,13 +230,13 @@ void json_create(char *fold_dir, const char *extension, char *key_1, char *val_s
 *	Output: a folder if it's not existed									*
 *	Additional requires: 												*
 ************************************************************************************************/
-void createFolder(char *path)
+void createFolder(const char *path)
 {
 	struct stat folinfo;
 	if ( stat(path, &folinfo) == -1 ) { mkdir(path, 0700); }
 }
 
-bool createNewFile(char *folderpath, char *filename, const char *extension, const char *ifany_path)
+bool createNewFile_2_mode(char *folderpath, char *filename, const char *extension, const char *ifany_path)
 {
 	switch (*ifany_path)
 	{
@@ -262,6 +262,12 @@ bool createNewFile(char *folderpath, char *filename, const char *extension, cons
 	}
 }
 
+/************************************************************************************************
+*	FUNCTION: 									
+*	Input:  												
+*	Output: 	 											
+*	Additional requires: 												
+************************************************************************************************/
 bool isEmptyFolder(const char *folderDir)
 {
 	struct dirent *dp;
@@ -274,9 +280,15 @@ bool isEmptyFolder(const char *folderDir)
 	return (nof > 2) ? false : true;
 }
 
+/************************************************************************************************
+*	FUNCTION: 									
+*	Input:  												
+*	Output: 	 											
+*	Additional requires: 												
+************************************************************************************************/
 bool emptyFolder(const char *folderDir)
 {
-	if (isEmptyFolder) return true;
+	if (isEmptyFolder(folderDir)) return true;
 	struct dirent *dp;
 	DIR *dir = opendir(folderDir);
 	if (dir == NULL) { return true; }
@@ -293,4 +305,32 @@ bool emptyFolder(const char *folderDir)
 	}	
 	closedir(dir);
 	return true;
+}
+
+/************************************************************************************************
+*	FUNCTION: 									
+*	Input:  												
+*	Output: 	 											
+*	Additional requires: 												
+************************************************************************************************/
+uint8_t num_of_file_in_folder(const char *folderDir)
+{
+	if (isEmptyFolder(folderDir)) return 0;
+	struct dirent *dp;
+	DIR *dir = opendir(folderDir);
+	if (dir == NULL) { return true; }
+	uint8_t num_of_file;
+	while((dp = readdir(dir)) != NULL)
+	{
+		if (strcmp(dp -> d_name, ".") && strcmp(dp -> d_name, "..")) num_of_file++;
+	}	
+	closedir(dir);
+	return num_of_file;
+}
+
+char* get_modify_time (const char *filepath)
+{
+	struct stat attr;
+	stat(filepath, &attr);
+	return ctime(&attr.st_mtime);
 }

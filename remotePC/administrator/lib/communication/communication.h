@@ -32,14 +32,9 @@
  *	Function
  *****************************************************************************/
 /*
- *	Create a new server socket.
+ *	Create a new socket.
  */
 int createServerSocket(int port, uint8_t numClient);
-
-/*
- *	Create a new client socket.
- */
-int createClientSocket(const char *ip, int port);
 
 /*
  *	Wait for reading a data package.

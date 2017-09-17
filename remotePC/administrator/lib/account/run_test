@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Compile
+gcc -g -o test	test.c  				\
+				account.c 				\
+				../json/json.c  		\
+				../frame/frame.c  		\
+				../fileproc/fileproc.c  \
+				-ljansson
+
+# Run
+./test

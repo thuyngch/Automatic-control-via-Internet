@@ -18,6 +18,8 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
+#include <time.h>
+
 
 /******************************************************************************
  *	Define
@@ -72,12 +74,37 @@ copyFile
 
 
 void readallfile(char *filedir, char *retstr);
+/*
+ *	
+ */
 void json_create( char *fold_dir, const char *extension, 
 				  char *key_1, char *val_string_1, char *key_2,  char *val_string_2);
-void createFolder(char *path);
+/*
+ *	
+ */
+void createFolder(const char *path);
+/*
+ *	
+ */
 bool isEmptyFolder(const char *folderDir);
+/*
+ *	
+ */
 bool emptyFolder(const char *folderDir);
+/*
+ *	
+ */
+uint8_t num_of_file_in_folder(const char *folderDir);
+/*
+ *	
+ */
+bool createNewFile_2_mode
+(char *folderpath, char *filename, const char *extension, const char *ifany_path);
 
+ /*
+ *	
+ */
+char* get_modify_time (const char *filepath);
 
 #endif /* FILEPROC_H_ */
 
