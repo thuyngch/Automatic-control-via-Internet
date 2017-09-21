@@ -1,7 +1,8 @@
 /*
- *	Author	: Nguyen Chinh Thuy.
- *	Date	: 04/09/2017.
- *	Version	: 1.0.1.
+ *	Author	    : Thuy Nguyen-Chinh.
+ *	Date	    : 04/09/2017.
+ *	Description : xxxxxxxxxx.
+ *	Version	    : 1.0.1.
  */
 /******************************************************************************
  *  Include
@@ -9,11 +10,7 @@
 /* Project */
 #include "modules/pin_def.h"
 #include "system/system.h"
-
-
-/******************************************************************************
- *  Definition
- *****************************************************************************/
+#include "modules/ui/ui.h"
 
 
 /******************************************************************************
@@ -21,6 +18,9 @@
  *****************************************************************************/
 void main()
 {
+    /* Declare */
+    bool match_result = false;
+
     /* Setup */
     systemSetup();
 
@@ -28,7 +28,29 @@ void main()
     while(1)
     {
         actIdle();
-        clkDelayMs(1000);
+        clkDelayMs(50);
+//        uiServing();
+
+        //-Testing of [DataTransaction]-//
+        if(flgICDI)
+        {
+            //-Remove ICDI interrupt flag-//
+            flgICDI = false;
+
+            //-Connect to the server-//
+            wifiConnectServer();
+
+            //-Send and receive data from the server-//
+            wifiSendData(buff, buff+7);
+            match_result = wifiRecData();
+
+            //-Display result into the Terminal-//
+            clkDelayMs(100);
+            if(match_result)
+                icdiSendStr("\n>>> Verification is correct!\n");
+            else
+                icdiSendStr("\n>>> Verification is wrong!\n");
+        }
     }
 }
 

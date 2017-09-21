@@ -12,6 +12,7 @@
 #include <stdbool.h>
 
 #include "../../lib/frame/frame.h"
+#include "../../lib/communication/communication.h"
 
 
 /******************************************************************************
@@ -40,7 +41,7 @@ typedef struct
 /* Client service */
 void
 serveClient
-(uint8_t addr, uint8_t fnc, uint8_t num, uint8_t data[]);
+(int connfd, uint8_t addr, uint8_t fnc, uint8_t num, uint8_t data[]);
 
 bool
 verifyClientService
@@ -48,7 +49,7 @@ verifyClientService
 
 void
 answerClient
-(uint8_t addr, uint8_t num, uint8_t data[]);
+(int connfd, uint8_t addr, uint8_t num, uint8_t data[]);
 
 
 /* Service [Login]*/

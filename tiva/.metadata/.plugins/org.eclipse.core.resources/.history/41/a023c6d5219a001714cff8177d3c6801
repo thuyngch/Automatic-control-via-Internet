@@ -1,0 +1,24 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../modules/ui/ui.c 
+
+C_DEPS += \
+./modules/ui/ui.d 
+
+OBJS += \
+./modules/ui/ui.obj 
+
+OBJS__QUOTED += \
+"modules/ui/ui.obj" 
+
+C_DEPS__QUOTED += \
+"modules/ui/ui.d" 
+
+C_SRCS__QUOTED += \
+"../modules/ui/ui.c" 
+
+

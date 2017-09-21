@@ -1,6 +1,6 @@
 /*
  *	Author	: Nguyen Chinh Thuy.
- *	Date	: 04/09/2017.
+ *	Date	: 14/09/2017.
  *	Version	: 1.0.1.
  */
 #ifndef	LCD_H_
@@ -28,9 +28,37 @@
 /*
  *  Setup module [LCD].
  */
-bool
-lcdSetup
-();
+bool lcdSetup();
+
+/*
+ *
+ */
+void lcdClearScreen();
+
+/*
+ *
+ */
+void lcdChangeLine(uint8_t line_th);
+
+/*
+ *
+ */
+void lcdDisplay(char *str);
+
+/*
+ *
+ */
+void lcdAddChar(char ch);
+
+/*
+ *
+ */
+void lcdAddStr(char str[], uint8_t len);
+
+/*
+ *
+ */
+void lcdBackspace();
 
 
 #endif	/* LCD_H_ */

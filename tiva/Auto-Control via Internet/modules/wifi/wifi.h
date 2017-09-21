@@ -54,6 +54,11 @@ bool wifiSetup();
 /*
  *  Send a data package.
  */
+void wifiConnectServer();
+
+/*
+ *  Send a data package.
+ */
 void wifiSendData(char *usr, char *pass);
 
 /*
@@ -77,6 +82,7 @@ void TIMER0A_Handler();
  *****************************************************************************/
 static void espSetupProtocol();
 static bool wifiCheckATCmdComplete(char* strCheck);
+static int wifiCheckATCmdCompleteRobust(char* strMain, char *strSub);
 static void wifiStartTimerCount(uint32_t timeout);
 static void wifiStopTimerCount(void);
 static uint8_t wifiClearBuffer(uint8_t buff[], uint8_t len, uint8_t start);

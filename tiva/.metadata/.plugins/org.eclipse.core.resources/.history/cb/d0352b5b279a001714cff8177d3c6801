@@ -1,0 +1,57 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+LIB_SRCS += \
+/home/chinhthuy/ti/Tivaware/driverlib/ccs/Debug/driverlib.lib 
+
+C_SRCS += \
+/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version\ 1.0.1/driver/CLK.1.0.1.c \
+/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version\ 1.0.1/driver/GPIO.1.0.1.c \
+/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version\ 1.0.1/driver/LAUNCHPAD.1.0.1.c \
+/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version\ 1.0.1/driver/TIMER.1.0.1.c \
+/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version\ 1.0.1/driver/UART.1.0.1.c \
+/home/chinhthuy/ti/Tivaware/utils/uartstdio.c 
+
+C_DEPS += \
+./lib/CLK.1.0.1.d \
+./lib/GPIO.1.0.1.d \
+./lib/LAUNCHPAD.1.0.1.d \
+./lib/TIMER.1.0.1.d \
+./lib/UART.1.0.1.d \
+./lib/uartstdio.d 
+
+OBJS += \
+./lib/CLK.1.0.1.obj \
+./lib/GPIO.1.0.1.obj \
+./lib/LAUNCHPAD.1.0.1.obj \
+./lib/TIMER.1.0.1.obj \
+./lib/UART.1.0.1.obj \
+./lib/uartstdio.obj 
+
+OBJS__QUOTED += \
+"lib/CLK.1.0.1.obj" \
+"lib/GPIO.1.0.1.obj" \
+"lib/LAUNCHPAD.1.0.1.obj" \
+"lib/TIMER.1.0.1.obj" \
+"lib/UART.1.0.1.obj" \
+"lib/uartstdio.obj" 
+
+C_DEPS__QUOTED += \
+"lib/CLK.1.0.1.d" \
+"lib/GPIO.1.0.1.d" \
+"lib/LAUNCHPAD.1.0.1.d" \
+"lib/TIMER.1.0.1.d" \
+"lib/UART.1.0.1.d" \
+"lib/uartstdio.d" 
+
+C_SRCS__QUOTED += \
+"/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver/CLK.1.0.1.c" \
+"/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver/GPIO.1.0.1.c" \
+"/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver/LAUNCHPAD.1.0.1.c" \
+"/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver/TIMER.1.0.1.c" \
+"/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver/UART.1.0.1.c" \
+"/home/chinhthuy/ti/Tivaware/utils/uartstdio.c" 
+
+

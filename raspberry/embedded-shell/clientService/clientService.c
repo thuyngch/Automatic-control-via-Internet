@@ -13,8 +13,6 @@
  *****************************************************************************/
 /* Client services */
 static t_client_service sClientService[] = {
-	{0x00, fnc_login, login},
-	{0x00, fnc_answer, login},
 	{0x01, fnc_login, login},
 };
 
@@ -29,7 +27,7 @@ static t_client_service sClientService[] = {
  *
  *	Output	:	
  */
-void serveClient(uint8_t addr, uint8_t fnc, uint8_t num, uint8_t data[])
+void serveClient(int connfd, uint8_t addr, uint8_t fnc, uint8_t num, uint8_t data[])
 {
 	/* Declare */
 	int num_serv = sizeof(sClientService) / sizeof(t_client_service);
@@ -45,7 +43,7 @@ void serveClient(uint8_t addr, uint8_t fnc, uint8_t num, uint8_t data[])
 	sClientService[serv_idx].callback(num, data, &num_out, out);
 
 	/* Answer the result for client */
-	answerClient(addr, num_out, out);
+	answerClient(connfd, addr, num_out, out);
 }
 //-----------------------------------------------------------------------------
 /*
@@ -78,17 +76,17 @@ bool verifyClientService(uint8_t addr, uint8_t fnc,
  *
  *	Output	:	
  */
-void answerClient(uint8_t addr, uint8_t num, uint8_t data[])
+void answerClient(int connfd, uint8_t addr, uint8_t num, uint8_t data[])
 {
 	/* Create buffer */
-	uint8_t out[BUFF_LEN];
-	int num_out;
-	frameEncode(addr, fnc_answer, num, data, &num_out, out);
+	uint8_t ans_data[BUFF_LEN];
+	int num_ans;
+	frameEncode(0x00, fnc_answer, num, data, &num_ans, ans_data);
 
-	/* Send to the client */
-	printf("Answer for client:\t");
-	printf("Number of bytes of the answer: %d\n", num_out);
-	for(int i = 0; i < num_out; i++)
-		printf("[%d] - %c\n", out[i], out[i]);
+	/* Print to the screen */
+	printf(">[Login]: {addr=%x, result=%d}\n", addr, ans_data[5]);
+
+	/* Send the result to the client */
+	sendDataSocket(connfd, ans_data, num_ans);
 }
 //-----------------------------------------------------------------------------

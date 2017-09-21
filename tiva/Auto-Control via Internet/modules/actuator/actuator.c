@@ -35,8 +35,10 @@
  */
 bool actSetup()
 {
-    gpioOutputSetup(ACT_PORT, ACT_PIN_1);
-    gpioOutputSetup(ACT_PORT, ACT_PIN_2);
+    gpioLEDSetup(1);
+    gpioLEDSetup(2);
+    gpioLEDSetup(3);
+    gpioLEDSetup(4);
     icdiSendStr(">>> [Actuator] module is enabled.\n");
     return false;
 }

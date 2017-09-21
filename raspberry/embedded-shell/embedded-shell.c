@@ -24,7 +24,7 @@
  *****************************************************************************/
 #define		EMBEDDED_BUFF_LEN			256
 #define 	EMBEDDED_PORT 				8000
-#define 	EMBEDDED_NUM_CLIENT			1
+#define 	EMBEDDED_NUM_CLIENT			5
 
 
 /******************************************************************************
@@ -63,20 +63,20 @@ while(1)
 {
 	//-Get data-//
 	connfd = waitDataSocket(listenfd, buff, EMBEDDED_BUFF_LEN);
-	printf(">>> Received data: %s\n\n", buff);
-	clearBuffer(buff, EMBEDDED_BUFF_LEN);
+	// printf(">>> Received data: %s\n\n", buff);
 
 	//-Decode frame and serve for client-//
-	// for(int i = 0; i < numRec; i++)
-	// {
-	// 	if(frameDecode(buff[i], &addr, &fnc, &num, data))
-	// 	{
-	// 		serveClient(addr, fnc, num, data);
-	// 		break;
-	// 	}
-	// }
+	for(int i = 0; i < 20; i++)
+	{
+		if(frameDecode(buff[i], &addr, &fnc, &num, data))
+		{
+			serveClient(connfd, addr, fnc, num, data);
+			break;
+		}
+	}
 
 	//-Close the connection-//
+	clearBuffer(buff, EMBEDDED_BUFF_LEN);
 	closeConnection(connfd);
 }
 

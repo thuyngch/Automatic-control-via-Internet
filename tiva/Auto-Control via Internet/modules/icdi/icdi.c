@@ -12,6 +12,9 @@
 /******************************************************************************
  *	Private
  *****************************************************************************/
+bool flgICDI;
+char buff[256];
+
 /*
  *  Function:
  *
@@ -91,19 +94,21 @@ void icdiSendArr(uint8_t arr[], uint16_t len)
 void UART0_Handler()
 {
     /* Clear interrupt */
-    UARTIntClear(WIFI_MODULE, UART_INT_RX | UART_INT_RT);
+    UARTIntClear(ICDI_MODULE, UART_INT_RX | UART_INT_RT);
 
-    /* Redirect received data to ESP8266 */
-    uartSendChar(WIFI_MODULE, uartGetChar(ICDI_MODULE));
+//    /* Redirect received data to ESP8266 */
+//    uartSendChar(WIFI_MODULE, uartGetChar(ICDI_MODULE));
+
+    /* Testing of Data transaction */
+    //-Get data from Terminal-//
+    uartGetStrNLCR(ICDI_MODULE, (uint8_t*)buff);
+    buff[6] = 0; buff[13] = 0;
+    icdiSendStr("\r\n>>> Username: ");
+    icdiSendStr(buff);
+    icdiSendStr("\tPassword: ");
+    icdiSendStr(buff+7);
+    icdiSendStr("\r\n");
+    flgICDI = true;
 }
-//-----------------------------------------------------------------------------
-/*
- *  Function:
- *
- *  Input   :
- *
- *  Output  :
- */
 
-//-----------------------------------------------------------------------------
 
