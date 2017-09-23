@@ -39,7 +39,11 @@
                          KP_PIN_OUT)
 //-----------------------------------------------------------------------------
 /* LCD */
-
+#define LCD_PORT_CTRL   GPIO_PORT_A
+#define LCD_PORT_DATA   GPIO_PORT_B
+#define LCD_PIN_RS      GPIO_PIN_7
+#define LCD_PIN_EN      GPIO_PIN_6
+#define LCD_OFFSET      2
 //-----------------------------------------------------------------------------
 /* WiFi */
 #define	WIFI_MODULE		UART3

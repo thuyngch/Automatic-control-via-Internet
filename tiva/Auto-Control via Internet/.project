@@ -41,6 +41,11 @@
 			<locationURI>PARENT-4-PROJECT_LOC/ccs/TM4C1294NCPDT/lib/version%201.0.1/driver/LAUNCHPAD.1.0.1.c</locationURI>
 		</link>
 		<link>
+			<name>lib/LCD162.1.0.1.c</name>
+			<type>1</type>
+			<locationURI>PARENT-4-PROJECT_LOC/ccs/TM4C1294NCPDT/lib/version%201.0.1/driver/LCD162.1.0.1.c</locationURI>
+		</link>
+		<link>
 			<name>lib/TIMER.1.0.1.c</name>
 			<type>1</type>
 			<locationURI>PARENT-4-PROJECT_LOC/ccs/TM4C1294NCPDT/lib/version%201.0.1/driver/TIMER.1.0.1.c</locationURI>

@@ -26,6 +26,8 @@
  */
 bool lcdSetup()
 {
+//    lcd_Setup(LCD_PORT_CTRL, LCD_PIN_RS, LCD_PIN_EN, LCD_PORT_DATA, LCD_OFFSET);
+    icdiSendStr(">>> [Lcd] module is enabled.\n");
     return false;
 }
 //-----------------------------------------------------------------------------

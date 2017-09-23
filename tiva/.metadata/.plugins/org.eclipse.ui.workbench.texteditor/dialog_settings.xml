@@ -9,37 +9,37 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="ConnectServer" key="selection"/>
+		<item value="LCD_Read2Nib" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="ConnectServer"/>
-			<item value="Connect to ser"/>
-			<item value="Connect"/>
-			<item value="LCD_H_"/>
-			<item value="//-------------------------------------------------------------------------------------------------"/>
-			<item value="edmcKp"/>
-			<item value="edmcKpBtn_"/>
-			<item value="tKpBtn"/>
+			<item value="LCD_Read2Nib"/>
+			<item value="0xF0"/>
+			<item value="gpioLow(lcdPortCtrl, 0x0F &lt;&lt; lcdDataOffset);"/>
+			<item value="lcdPortCtrl &amp;= ~(0x0F &lt;&lt; lcdDataOffset);"/>
+			<item value="*lcdPort"/>
+			<item value="__delay_cycles(LCD_DELAY*40);"/>
+			<item value="__delay_cycles(LCD_DELAY);"/>
+			<item value="0xF0 &gt;&gt; lcdDataOffset"/>
 		</list>
 		<list key="replacehistory">
-			<item value="UI_H_"/>
-			<item value="//-----------------------------------------------------------------------------"/>
-			<item value="kp"/>
-			<item value="kpBtn_"/>
-			<item value="t_KpBtn"/>
-			<item value="WIFI_TIMER_SUB"/>
-			<item value="WIFI_TIMER"/>
-			<item value="WIFI_TIMEOUT"/>
+			<item value="0x0F"/>
+			<item value="gpioLow(lcdPortData, 0x0F &lt;&lt; lcdDataOffset);"/>
+			<item value="gpioLow(lcdPortCtrl, 0x0F &lt;&lt; lcdDataOffset);"/>
+			<item value="lcdPortCtrl"/>
+			<item value="clkDelayMs(2);"/>
+			<item value="clkDelayUs(50);"/>
+			<item value="clkDelayUs(50)"/>
+			<item value="clkDelay(50)"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="357" key="DIALOG_WIDTH"/>
+		<item value="337" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="622" key="DIALOG_HEIGHT"/>
-		<item value="369" key="DIALOG_X_ORIGIN"/>
+		<item value="574" key="DIALOG_HEIGHT"/>
+		<item value="641" key="DIALOG_X_ORIGIN"/>
 		<item value="71" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
