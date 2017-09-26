@@ -226,6 +226,10 @@ static uint8_t wifiClearBuffer(uint8_t buff[], uint8_t len, uint8_t start)
  */
 bool wifiSetup()
 {
+    /* Print state into screen */
+    lcdChangeLine(1);
+    lcdDisplay("Connecting to WiFi");
+
 	/* GPIO setup */
 	gpioOutputSetup(WIFI_PORT_CTL, WIFI_PIN_RST | WIFI_PIN_EN);
 
@@ -242,7 +246,7 @@ bool wifiSetup()
     sRegState.flgUartInt = false;
 
 	/* Notify */
-	icdiSendStr("\n>>> [WiFi] module is enabled.\n");
+	icdiSendStr("\r\n>>> [WiFi] module is enabled.\r\n");
 
 	/* If no error, return false */
 	return false;

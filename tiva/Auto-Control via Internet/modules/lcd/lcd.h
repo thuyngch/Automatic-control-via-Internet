@@ -39,7 +39,7 @@ void lcdClearScreen();
 /*
  *
  */
-void lcdChangeLine(uint8_t line_th);
+void lcdChangeLine(bool line_th);
 
 /*
  *

@@ -39,7 +39,7 @@ bool actSetup()
     gpioLEDSetup(2);
     gpioLEDSetup(3);
     gpioLEDSetup(4);
-    icdiSendStr(">>> [Actuator] module is enabled.\n");
+    icdiSendStr("\r\n>>> [Actuator] module is enabled.\r\n");
     return false;
 }
 //-----------------------------------------------------------------------------
@@ -55,15 +55,12 @@ void actServe(bool result, uint32_t interval)
 {
     if(result)
     {
-        gpioHigh(ACT_PORT, ACT_PIN_1);
+        gpioHigh(ACT_PORT, ACT_PIN);
         timerDelay(interval);
-        gpioLow(ACT_PORT, ACT_PIN_1);
+        gpioLow(ACT_PORT, ACT_PIN);
     }
     else
     {
-        gpioHigh(ACT_PORT, ACT_PIN_2);
-        timerDelay(interval);
-        gpioLow(ACT_PORT, ACT_PIN_2);
     }
 }
 //-----------------------------------------------------------------------------
@@ -76,6 +73,6 @@ void actServe(bool result, uint32_t interval)
  */
 void actIdle()
 {
-    gpioToggle(ACT_PORT, ACT_PIN_2);
+    gpioToggle(GPIO_PORT_LED_34, GPIO_PIN_LED_4);
 }
 //-----------------------------------------------------------------------------

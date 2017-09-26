@@ -21,8 +21,8 @@
 s_sysmod SystemModule[] = {
     {modid(Icdi)    , icdiSetup},
     {modid(Act)     , actSetup},
-    {modid(Kp)      , kpSetup},
     {modid(Lcd)     , lcdSetup},
+    {modid(Kp)      , kpSetup},
     {modid(Wifi)    , wifiSetup},
 };
 //-----------------------------------------------------------------------------

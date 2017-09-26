@@ -11,6 +11,7 @@
  *	Include
  *****************************************************************************/
 /* Standard */
+#include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -39,25 +40,25 @@ bool icdiSetup();
 
 
 /*
- *
+ *  Send a character through UART0
  */
 void icdiSendChar(char ch);
 
 
 /*
- *
+ *  Send a string through UART0
  */
 void icdiSendStr(char *str);
 
 
 /*
- *
+ *  Send an array specified by its length through UART0
  */
 void icdiSendArr(uint8_t arr[], uint16_t len);
 
 
 /*
- *
+ *  UART0 interrupt
  */
 void UART0_Handler();
 

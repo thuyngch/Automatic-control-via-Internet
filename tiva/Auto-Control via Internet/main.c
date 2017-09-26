@@ -19,7 +19,7 @@
 void main()
 {
     /* Declare */
-    bool match_result = false;
+//    bool match_result = false;
 
     /* Setup */
     systemSetup();
@@ -27,30 +27,36 @@ void main()
     /* Serve */
     while(1)
     {
+        /* Idle: Toggle LED */
         actIdle();
-        clkDelayMs(50);
+        clkDelayMs(10);
+
+        /* Sweep keypad */
+        kpSweep();
+
+        /* User interface */
 //        uiServing();
 
         //-Testing of [DataTransaction]-//
-        if(flgICDI)
-        {
-            //-Remove ICDI interrupt flag-//
-            flgICDI = false;
-
-            //-Connect to the server-//
-            wifiConnectServer();
-
-            //-Send and receive data from the server-//
-            wifiSendData(buff, buff+7);
-            match_result = wifiRecData();
-
-            //-Display result into the Terminal-//
-            clkDelayMs(100);
-            if(match_result)
-                icdiSendStr("\n>>> Verification is correct!\n");
-            else
-                icdiSendStr("\n>>> Verification is wrong!\n");
-        }
+//        if(flgICDI)
+//        {
+//            //-Remove ICDI interrupt flag-//
+//            flgICDI = false;
+//
+//            //-Connect to the server-//
+//            wifiConnectServer();
+//
+//            //-Send and receive data from the server-//
+//            wifiSendData(buff, buff+7);
+//            match_result = wifiRecData();
+//
+//            //-Display result into the Terminal-//
+//            clkDelayMs(100);
+//            if(match_result)
+//                icdiSendStr("\n>>> Verification is correct!\n");
+//            else
+//                icdiSendStr("\n>>> Verification is wrong!\n");
+//        }
     }
 }
 

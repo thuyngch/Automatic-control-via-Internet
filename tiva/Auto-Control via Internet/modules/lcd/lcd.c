@@ -26,8 +26,15 @@
  */
 bool lcdSetup()
 {
-//    lcd_Setup(LCD_PORT_CTRL, LCD_PIN_RS, LCD_PIN_EN, LCD_PORT_DATA, LCD_OFFSET);
-    icdiSendStr(">>> [Lcd] module is enabled.\n");
+    /* LCD 16x2 setup */
+    LCD_Setup(LCD_PORT_CTRL, LCD_PIN_RS, LCD_PIN_EN, LCD_PORT_DATA, LCD_OFFSET);
+    lcdClearScreen();
+    lcdDisplay("Initializing...");
+
+    /* Notify through ICDI */
+    icdiSendStr("\r\n>>> [Lcd] module is enabled.\r\n");
+
+    /* Return */
     return false;
 }
 //-----------------------------------------------------------------------------
@@ -40,17 +47,23 @@ bool lcdSetup()
  */
 void lcdClearScreen()
 {
+    LCD_Clear();
+    LCD_Home();
 }
 //-----------------------------------------------------------------------------
 /*
- *  Function:
+ *  Function:   Change the current line on the screen.
  *
- *  Input   :
+ *  Input   :   line_th : [false] for 1st line, [true] for 2nd line.
  *
- *  Output  :
+ *  Output  :   (void).
  */
-void lcdChangeLine(uint8_t line_th)
+void lcdChangeLine(bool line_th)
 {
+    if(line_th)
+        LCD_Goto(1, 1);
+    else
+        LCD_Goto(2, 1);
 }
 //-----------------------------------------------------------------------------
 /*
@@ -62,6 +75,7 @@ void lcdChangeLine(uint8_t line_th)
  */
 void lcdDisplay(char *str)
 {
+    LCD_PrintString(str);
 }
 //-----------------------------------------------------------------------------
 /*

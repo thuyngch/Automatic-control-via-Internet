@@ -20,6 +20,7 @@
 /* Project */
 #include "../pin_def.h"
 #include "../icdi/icdi.h"
+#include "../lcd/lcd.h"
 #include "esp.h"
 #include "frame.h"
 

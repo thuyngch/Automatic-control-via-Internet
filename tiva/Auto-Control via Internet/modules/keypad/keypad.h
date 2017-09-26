@@ -20,6 +20,15 @@
 /******************************************************************************
  *	Definition
  *****************************************************************************/
+/* Sweep cycle */
+#define KEYPAD_SWEEP_CYCLE      50      // ms
+//-----------------------------------------------------------------------------
+
+/* Anti-noise delay */
+#define KEYPAD_ANTI_NOISE       10      // ms
+
+//-----------------------------------------------------------------------------
+
 /* Enum of Button */
 typedef enum
 {
@@ -45,8 +54,8 @@ typedef enum
 
 //-----------------------------------------------------------------------------
 /* Available interrupt */
-extern  bool    flgBtnInt;
-extern  t_KpBtn readBtn;
+extern  bool    flgBtnInt;      // Indicate whether a button is pressed
+extern  t_KpBtn readBtn;        // Which button is pressed
 
 
 /******************************************************************************
@@ -58,16 +67,15 @@ bool kpSetup();
 /* Sweep */
 void kpSweep();
 
-/* Read button */
-t_KpBtn kpReadBtnFromISR();
-
 /* Interrupt */
-void GPIO_PK_Handler(void);
+void GPIO_PK_Handler();
 
 
 /******************************************************************************
  *	Private
  *****************************************************************************/
+/* Read button */
+static t_KpBtn kpReadBtnFromISR();
 
 
 #endif	/* KEYPAD_H_ */

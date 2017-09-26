@@ -63,8 +63,7 @@
 /* Actuator */
 #define ACT_MODULE      GPIO_PORT_LED_12
 #define ACT_PORT        GPIO_PORT_LED_12
-#define ACT_PIN_1       GPIO_PIN_LED_1
-#define ACT_PIN_2       GPIO_PIN_LED_2
+#define ACT_PIN         GPIO_PIN_LED_1
 //-----------------------------------------------------------------------------
 /* ICDI */
 #define ICDI_MODULE     UART_ICDI

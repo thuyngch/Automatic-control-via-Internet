@@ -42,7 +42,7 @@ bool icdiSetup()
     uartSetup(ui32ClkFreq, ICDI_MODULE, 115200, UART_INT_RT | UART_INT_RX);
 
     /* Notify */
-    icdiSendStr(">>> [ICDI] module is enabled.\n");
+    icdiSendStr("\r\n>>> [ICDI] module is enabled.\r\n");
 
     /* Return */
     return false;
