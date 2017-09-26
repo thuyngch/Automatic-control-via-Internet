@@ -1,8 +1,8 @@
 /*
- *  Author      : Thuy Nguyen-Chinh.
- *  Date        : 04/09/2017.
- *  Description : This is the main file of the project.
- *  Version     : 1.0.1.
+ *	Author	    : Thuy Nguyen-Chinh.
+ *	Date	    : Sep 04, 2017
+ *	Description : This is the main file of the project.
+ *	Version	    : 1.0.1.
  */
 /******************************************************************************
  *  Include
@@ -33,9 +33,10 @@ void main()
 
         /* Sweep keypad */
         kpSweep();
+        flgBtnInt = kpCheck();
 
         /* User interface */
-//        uiServing();
+        uiServing();
 
         //-Testing of [DataTransaction]-//
 //        if(flgICDI)

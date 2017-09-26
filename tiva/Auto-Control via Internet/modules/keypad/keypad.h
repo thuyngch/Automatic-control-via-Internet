@@ -21,14 +21,10 @@
  *	Definition
  *****************************************************************************/
 /* Sweep cycle */
-#define KEYPAD_SWEEP_CYCLE      50      // ms
-//-----------------------------------------------------------------------------
+#define KEYPAD_SWEEP_CYCLE      15      // ms
 
-/* Anti-noise delay */
-#define KEYPAD_ANTI_NOISE       10      // ms
 
 //-----------------------------------------------------------------------------
-
 /* Enum of Button */
 typedef enum
 {
@@ -67,15 +63,18 @@ bool kpSetup();
 /* Sweep */
 void kpSweep();
 
-/* Interrupt */
-void GPIO_PK_Handler();
+/* Sweep */
+bool kpCheck();
 
 
 /******************************************************************************
  *	Private
  *****************************************************************************/
 /* Read button */
-static t_KpBtn kpReadBtnFromISR();
+static t_KpBtn kpReadBtn();
+
+/* Print read button into Terminal through UART0 */
+static void kpPrintReadBtn();
 
 
 #endif	/* KEYPAD_H_ */

@@ -1,7 +1,8 @@
 /*
- *	Author	: Nguyen Chinh Thuy.
- *	Date	: 04/09/2017.
- *	Version	: 1.0.1.
+ *  Author      : Thuy Nguyen-Chinh.
+ *  Date        : Sep 04, 2017
+ *  Description :
+ *  Version     : 1.0.1.
  */
 /******************************************************************************
  *	Include
@@ -47,16 +48,15 @@ bool actSetup()
  *  Function: Module [Actuator] serves for requests.
  *
  *  Input   : result    : Matching result.
- *            interval  : Interval of delay between two logins.
  *
  *  Output  : (void).
  */
-void actServe(bool result, uint32_t interval)
+void actServe(bool result)
 {
     if(result)
     {
         gpioHigh(ACT_PORT, ACT_PIN);
-        timerDelay(interval);
+        clkDelayMs(ACT_DELAY_INTERVAL);
         gpioLow(ACT_PORT, ACT_PIN);
     }
     else

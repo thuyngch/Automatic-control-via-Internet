@@ -1,6 +1,8 @@
 /*
- *	Author	: Nguyen Chinh Thuy.
- *	Date	: 14/09/2017.
+ *  Author      : Thuy Nguyen-Chinh.
+ *  Date        : Sep 14, 2017.
+ *  Description : User interface including LCD 16x2 and keypad.
+ *  Version     : 1.0.1.
  */
 #ifndef	UI_H_
 #define	UI_H_
@@ -51,7 +53,7 @@ void uiServing();
 /*
  *
  */
-static void uiCallPage();
+static void uiCallPage(t_KpBtn readbtn);
 
 /*
  *
@@ -61,17 +63,17 @@ static void uiPageIdle();
 /*
  *
  */
-static void uiPageUsr(char *usr);
+static void uiPageUsr(t_KpBtn readbtn);
 
 /*
  *
  */
-static void uiPagePass(char *pass);
+static void uiPagePass(t_KpBtn readbtn);
 
 /*
  *
  */
-static void uiPageResult();
+static void uiPageResult(char *usr, char *pass);
 
 
 #endif	/* UI_H_ */

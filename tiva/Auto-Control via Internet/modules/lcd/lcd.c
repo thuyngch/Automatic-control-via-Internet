@@ -29,6 +29,7 @@ bool lcdSetup()
     /* LCD 16x2 setup */
     LCD_Setup(LCD_PORT_CTRL, LCD_PIN_RS, LCD_PIN_EN, LCD_PORT_DATA, LCD_OFFSET);
     lcdClearScreen();
+    lcdChangeLine(0);
     lcdDisplay("Initializing...");
 
     /* Notify through ICDI */
@@ -60,7 +61,7 @@ void lcdClearScreen()
  */
 void lcdChangeLine(bool line_th)
 {
-    if(line_th)
+    if(!line_th)
         LCD_Goto(1, 1);
     else
         LCD_Goto(2, 1);
@@ -87,6 +88,7 @@ void lcdDisplay(char *str)
  */
 void lcdAddChar(char ch)
 {
+    LCD_Display(ch);
 }
 //-----------------------------------------------------------------------------
 /*

@@ -1,6 +1,8 @@
 /*
- *	Author	: Nguyen Chinh Thuy.
- *	Date	: 14/09/2017.
+ *	Author	    : Thuy Nguyen-Chinh.
+ *	Date	    : Sep 14, 2017.
+ *	Description : User interface including LCD 16x2 and keypad.
+ *	Version	    : 1.0.1.
  */
 /******************************************************************************
  *	Include
@@ -14,30 +16,32 @@
  /* Pages state */
 t_page  pageState;
 
+//-----------------------------------------------------------------------------
 /* Username and password */
-char usr[UI_LEN+1];
-char pass[UI_LEN+1];
+char usr[UI_LEN+1];     int8_t usr_count = 0;
+char pass[UI_LEN+1];    int8_t pass_count = 0;
 
 //-----------------------------------------------------------------------------
 /*
- *  Function:
+ *  Function:   Call page corresponding to state register.
  *
- *  Input   :
+ *  Input   :   (void)
  *
- *  Output  :
+ *  Output  :   (void)
  */
-static void uiCallPage()
+static void uiCallPage(t_KpBtn readbtn)
 {
     switch(pageState)
     {
     case page_idle:
-        uiPageIdle();
+        uiPageUsr(readbtn);
+        pageState = page_usr;
         break;
     case page_usr:
-        uiPageUsr(usr);
+        uiPageUsr(readbtn);
         break;
     case page_pass:
-        uiPagePass(pass);
+        uiPagePass(readbtn);
         break;
     case page_result:
         uiPageResult(usr, pass);
@@ -55,139 +59,206 @@ static void uiCallPage()
 static void uiPageIdle()
 {
     lcdClearScreen();
-    lcdChangeLine(1);
-    lcdDisplay("   Welcome to   ");
-    lcdChangeLine(2);
-    lcdDisplay("  our building  ");
+    lcdDisplay("Welcome");
 }
 //-----------------------------------------------------------------------------
 /*
- *  Function:
+ *  Function:   Page serves for the username-input process.
  *
- *  Input   :
+ *  Input   :   readbtn : Read button.
  *
- *  Output  :
+ *  Output  :   (void)
  */
-static void uiPageUsr(char *usr)
+static void uiPageUsr(t_KpBtn readbtn)
 {
-    /* Declare */
-    static char buffer[UI_LEN];
-    static int8_t count = 0;
-
     /* Title line */
     lcdClearScreen();
-    lcdChangeLine(1);
     lcdDisplay("Username:");
 
     /* Update buffer */
-    if(readBtn == BTN(Clr))
+    if(readbtn == BTN(Clr))
     {
-        if(--count <= 0)
+        //-Back to the Idle page-//
+        if(--usr_count < 0)             // Backspace current cursor
         {
-            count = 0;              // Reset count
+            usr_count = 0;              // Reset count
             pageState = page_idle;  // Set the page to Idle
-            flgBtnInt = true;       // To call [uiServing] function
-            readBtn = BTN(None);
+            uiPageIdle();
             return;
         }
+        //-Remove the last character-//
+        else
+            usr[usr_count] = 0;
     }
-    else if(readBtn == BTN(Cfm))
+    //-------------------------------------------------------------------------
+    else if(readbtn == BTN(Cfm))
     {
+        lcdClearScreen();
+        lcdDisplay("Password:");
+
+        pageState = page_pass;
+        readBtn = BTN(None);
+        return;
     }
-    else if((readBtn >= BTN(0)) && (readBtn <= BTN(9)))
+    //-------------------------------------------------------------------------
+    else if((readbtn >= BTN(0)) && (readbtn <= BTN(9)))
     {
-        buffer[count++] = readBtn - BTN(0) + '0';
+        if(usr_count == UI_LEN)
+        {
+            //-Overflow notification-//
+            lcdClearScreen();
+            lcdDisplay("Overflow");
+
+            //-Delay interval-//
+            clkDelayMs(1000);
+
+            //-Return to the current state-//
+            lcdClearScreen();
+            lcdDisplay("Username:");
+        }
+        else
+        {
+            usr[usr_count++] = readbtn - BTN(0) + '0';
+            usr[usr_count] = 0;
+        }
     }
-    else if((readBtn >= BTN(A)) && (readBtn <= BTN(D)))
+    //-------------------------------------------------------------------------
+    else if((readbtn >= BTN(A)) && (readbtn <= BTN(D)))
     {
-        buffer[count++] = readBtn - BTN(A) + 'A';
+        if(usr_count == UI_LEN)
+        {
+            //-Overflow notification-//
+            lcdClearScreen();
+            lcdDisplay("Overflow");
+
+            //-Delay interval-//
+            clkDelayMs(1000);
+
+            //-Return to the current state-//
+            lcdClearScreen();
+            lcdDisplay("Username:");
+        }
+        else
+        {
+            usr[usr_count++] = readbtn - BTN(A) + 'A';
+            usr[usr_count] = 0;
+        }
     }
 
     /* Content line */
-    lcdChangeLine(2);
-    lcdAddStr(buffer, count);
-
-    /* Enough characters */
-    if(count == UI_LEN)
-    {
-        count = 0;
-        pageState = page_pass;
-        flgBtnInt = true;
-        readBtn = BTN(None);
-        strncpy(usr, buffer, 6);
-    }
+    lcdChangeLine(1);
+    lcdDisplay(usr);
 }
 //-----------------------------------------------------------------------------
 /*
- *  Function:
+ *  Function:   Page serves for the password-input process.
  *
- *  Input   :
+ *  Input   :   readbtn : Read button.
  *
- *  Output  :
+ *  Output  :   (void)
  */
-static void uiPagePass(char *pass)
+static void uiPagePass(t_KpBtn readbtn)
 {
     /* Declare */
-    static char buffer[UI_LEN];
-    static int8_t count = 0;
+    uint8_t i;
 
     /* Title line */
     lcdClearScreen();
-    lcdChangeLine(1);
     lcdDisplay("Password:");
 
     /* Update buffer */
-    if(readBtn == BTN(Clr))
+    if(readbtn == BTN(Clr))
     {
-        if(--count <= 0)
+        //-Back to the Idle page-//
+        if(--pass_count < 0)             // Backspace current cursor
         {
-            count = 0;              // Reset count
-            pageState = page_usr;   // Set the page to Username
-            flgBtnInt = true;       // To call [uiServing] function
+            pass_count = 0;              // Reset count
             readBtn = BTN(None);
+            pageState = page_usr;   // Set the page
+            uiPageUsr(readBtn);
             return;
         }
+        //-Remove the last character-//
+        else
+            pass[pass_count] = 0;
     }
-    else if(readBtn == BTN(Cfm))
+    //-------------------------------------------------------------------------
+    else if(readbtn == BTN(Cfm))
     {
+        pageState = page_result;
+        uiPageResult(usr, pass);
+        return;
     }
-    else if((readBtn >= BTN(0)) && (readBtn <= BTN(9)))
+    //-------------------------------------------------------------------------
+    else if((readbtn >= BTN(0)) && (readbtn <= BTN(9)))
     {
-        buffer[count++] = readBtn - BTN(0) + '0';
+        if(pass_count == UI_LEN)
+        {
+            //-Overflow notification-//
+            lcdClearScreen();
+            lcdDisplay("Overflow");
+
+            //-Delay interval-//
+            clkDelayMs(1000);
+
+            //-Return to the current state-//
+            lcdClearScreen();
+            lcdDisplay("Password:");
+        }
+        else
+        {
+            pass[pass_count++] = readbtn - BTN(0) + '0';
+            pass[pass_count] = 0;
+        }
     }
-    else if((readBtn >= BTN(A)) && (readBtn <= BTN(D)))
+    //-------------------------------------------------------------------------
+    else if((readbtn >= BTN(A)) && (readbtn <= BTN(D)))
     {
-        buffer[count++] = readBtn - BTN(A) + 'A';
+        if(pass_count == UI_LEN)
+        {
+            //-Overflow notification-//
+            lcdClearScreen();
+            lcdDisplay("Overflow");
+
+            //-Delay interval-//
+            clkDelayMs(1000);
+
+            //-Return to the current state-//
+            lcdClearScreen();
+            lcdDisplay("Password:");
+        }
+        else
+        {
+            pass[pass_count++] = readbtn - BTN(A) + 'A';
+            pass[pass_count] = 0;
+        }
     }
 
     /* Content line */
-    lcdChangeLine(2);
-    lcdAddStr(buffer, count);
-
-    /* Enough characters */
-    if(count == UI_LEN)
-    {
-        count = 0;
-        pageState = page_result;
-        flgBtnInt = true;
-        readBtn = BTN(None);
-        strncpy(pass, buffer, 6);
-    }
+    lcdChangeLine(1);
+    for(i = 0; i < strlen(pass); i++)
+        lcdAddChar('*');
 }
 //-----------------------------------------------------------------------------
 /*
- *  Function:
+ *  Function:   Page serves for the result process.
  *
- *  Input   :
+ *  Input   :   usr     : Confirmed username
+ *              pass    : Confirmed password
  *
- *  Output  :
+ *  Output  :   (void)
  */
 static void uiPageResult(char *usr, char *pass)
 {
     /* Declare */
     bool match_result = false;
 
+    /* Wait for server */
+    lcdClearScreen();
+    lcdDisplay("Verifying...");
+
     /* Send data */
+    wifiConnectServer();
     wifiSendData(usr, pass);
 
     /* Receive data */
@@ -195,40 +266,43 @@ static void uiPageResult(char *usr, char *pass)
 
     /* Display the result */
     lcdClearScreen();
-    lcdChangeLine(1);
     if(match_result)
     {
-        lcdDisplay("     Correct    ");
-        actServe(1, ACT_DELAY_INTERVAL);
+        lcdDisplay("Valid");
+        actServe(true);
     }
     else
     {
-        lcdDisplay("     Wrong      ");
+        lcdDisplay("Invalid");
+        clkDelayMs(5000);
     }
 
     /* Reset username and password */
-    memset(usr, 0, 7);
-    memset(pass, 0, 7);
+    memset(usr, 0, UI_LEN+1);   usr_count = 0;
+    memset(pass, 0, UI_LEN+1);  pass_count = 0;
+
+    /* Return to Idle page */
+    pageState = page_idle;
+    uiPageIdle();
 }
-//-----------------------------------------------------------------------------
 
 
 /******************************************************************************
  *  Public
  *****************************************************************************/
 /*
- *  Function:
+ *  Function:   User interface service.
  *
- *  Input   :
+ *  Input   :   (void)
  *
- *  Output  :
+ *  Output  :   (void)
  */
 void uiServing()
 {
-    while(flgBtnInt)
+    if(flgBtnInt)
     {
         flgBtnInt = false;
-        uiCallPage();
+        uiCallPage(readBtn);
     }
 }
 //-----------------------------------------------------------------------------

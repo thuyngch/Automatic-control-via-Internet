@@ -228,7 +228,7 @@ bool wifiSetup()
 {
     /* Print state into screen */
     lcdChangeLine(1);
-    lcdDisplay("Connecting to WiFi");
+    lcdDisplay("Connect to WiFi ");
 
 	/* GPIO setup */
 	gpioOutputSetup(WIFI_PORT_CTL, WIFI_PIN_RST | WIFI_PIN_EN);
@@ -247,6 +247,9 @@ bool wifiSetup()
 
 	/* Notify */
 	icdiSendStr("\r\n>>> [WiFi] module is enabled.\r\n");
+    lcdChangeLine(1);
+    lcdDisplay("WiFi connected  ");
+    clkDelayMs(2000);
 
 	/* If no error, return false */
 	return false;

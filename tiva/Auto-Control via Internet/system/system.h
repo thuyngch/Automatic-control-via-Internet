@@ -1,7 +1,8 @@
 /*
- *	Author	: Nguyen Chinh Thuy.
- *	Date	: 04/09/2017.
- *	Version	: 1.0.1.
+ *  Author      : Thuy Nguyen-Chinh.
+ *  Date        : Sep 04, 2017
+ *  Description : This file is responsible for initializing the whole of system.
+ *  Version     : 1.0.1.
  */
 #ifndef	SYSTEM_H_
 #define	SYSTEM_H_

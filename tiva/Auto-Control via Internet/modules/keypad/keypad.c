@@ -30,7 +30,7 @@ t_KpBtn     readBtn;
 #define IN(x)       (KP_PIN_IN_##x)     // Get name of Input pin
 #define OUT(x)      (KP_PIN_OUT_##x)    // Get name of Output pin
 
-static t_KpBtn kpReadBtnFromISR()
+static t_KpBtn kpReadBtn()
 {
     /* Read */
     uint8_t ui8Btn = gpioRead(KP_PORT, KP_PIN);
@@ -78,6 +78,40 @@ static t_KpBtn kpReadBtnFromISR()
     default             :   return BTN(None);
     }
 }
+//-----------------------------------------------------------------------------
+/*
+ *  Function: Print read button into Terminal through UART0.
+ *
+ *  Input   : (void)
+ *
+ *  Output  : (void)
+ */
+static void kpPrintReadBtn()
+{
+    /* Parser */
+    if(readBtn == BTN(None))
+        return;
+
+    /* Prefix */
+    uartSendStr(UART_ICDI, "\r\n>> Read button: ");
+
+    /* Analysis */
+    if(readBtn == BTN(Cfm))
+        uartSendStr(UART_ICDI, "Cfm");
+
+    else if(readBtn == BTN(Clr))
+        uartSendStr(UART_ICDI, "Clr");
+
+    else if((readBtn >= BTN(0)) && (readBtn <= BTN(9)))
+        uartSendChar(UART_ICDI, readBtn - BTN(0) + '0');
+
+    else if((readBtn >= BTN(A)) && (readBtn <= BTN(D)))
+        uartSendChar(UART_ICDI, readBtn - BTN(A) + 'A');
+
+    /* Suffix */
+    uartSendStr(UART_ICDI, "\r\n");
+}
+//-----------------------------------------------------------------------------
 
 
 /******************************************************************************
@@ -97,9 +131,6 @@ bool kpSetup()
 
     /* Input */
     gpioInputSetup(KP_PORT, KP_PIN_IN, GPIO_IN_PULL_UP);
-
-    /* Interrupt */
-    gpioIntSetup(KP_PORT, KP_PIN_IN, GPIO_IN_DETECT_FALL, GPIO_PK_Handler);
 
     /* Notify */
     uartSendStr(UART_ICDI, "\r\n>>> [Keypad] module is enabled.\r\n");
@@ -147,19 +178,35 @@ void kpSweep()
 }
 //-----------------------------------------------------------------------------
 /*
- *	Input		:	None
- *	Output		:	None
- *	Description	:	Interrupt of Keypad (GPIO portK)
+ *  Function: Check whether keypad has a pressed button.
+ *
+ *  Input   : (void)
+ *
+ *  Output  : Whether a button is pressed.
  */
-void GPIO_PK_Handler()
+bool kpCheck()
 {
-    /* Anti-noise delay */
-    clkDelayMs(KEYPAD_ANTI_NOISE);
+    /* Declare*/
+    static t_KpBtn readbtn = BTN(None);
 
-	/* Read button */
-    readBtn = kpReadBtnFromISR();
-	
-	/* Exit ISR */
-	gpioIntExit(KP_PORT, KP_PIN);
+    /* Read */
+    t_KpBtn tmp = kpReadBtn();
+
+
+    /* Verify */
+    if((tmp == readbtn) && (tmp != BTN(None)))
+    {
+        readBtn = readbtn;      // Update the global
+        readbtn = BTN(None);    // Reset local
+        kpPrintReadBtn();       // Print the global
+        return true;
+    }
+    if((tmp != readbtn) && (tmp != BTN(None)))
+    {
+        readbtn = tmp;          // Update the local
+        readBtn = BTN(None);
+        return false;
+    }
+    return false;
 }
 
