@@ -198,7 +198,6 @@ bool kpCheck()
     {
         readBtn = readbtn;      // Update the global
         readbtn = BTN(None);    // Reset local
-        kpPrintReadBtn();       // Print the global
         return true;
     }
     if((tmp != readbtn) && (tmp != BTN(None)))

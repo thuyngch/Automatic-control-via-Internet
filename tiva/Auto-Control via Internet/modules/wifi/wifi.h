@@ -55,7 +55,17 @@ bool wifiSetup();
 /*
  *  Send a data package.
  */
+bool wifiCheckServerConnection();
+
+/*
+ *  Send a data package.
+ */
 void wifiConnectServer();
+
+/*
+ *  Disconnect from server.
+ */
+void wifiDisconnectServer();
 
 /*
  *  Send a data package.
@@ -87,6 +97,7 @@ static int wifiCheckATCmdCompleteRobust(char* strMain, char *strSub);
 static void wifiStartTimerCount(uint32_t timeout);
 static void wifiStopTimerCount(void);
 static uint8_t wifiClearBuffer(uint8_t buff[], uint8_t len, uint8_t start);
+static void wifiRefreshBuffer(uint8_t buff[], uint8_t len);
 
 
 #endif	/* WIFI_H_ */

@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -33,7 +34,12 @@
 /*
  *	Create a new socket.
  */
-int createSocket(int port, uint8_t numClient);
+int createServerSocket(int port, int numClient);
+
+/*
+ *	Create a new client socket.
+ */
+int createClientSocket(const char *ip, int port);
 
 /*
  *	Wait for reading a data package.
@@ -54,6 +60,11 @@ void closeConnection(int connfd);
  *	Get IP address of socket.
  */
 void getIPAddr(char *str);
+
+/*
+ *	Get port number of socket.
+ */
+int getPort(int listenfd);
 
 
 #endif /* COMMUNICATION_H_ */

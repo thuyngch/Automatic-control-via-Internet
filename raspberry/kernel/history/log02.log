@@ -199,3 +199,659 @@
 ]
 
 
+--- Tue Sep 26 22:30:02 2017 ---
+[
+	{"username": "123456"},
+	{"password": "654321"},
+	{"result": "true"}
+]
+
+
+--- Tue Sep 26 22:30:27 2017 ---
+[
+	{"username": "12366"},
+	{"password": "123456"},
+	{"result": "false"}
+]
+
+
+--- Tue Sep 26 22:31:33 2017 ---
+[
+	{"username": "12"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Tue Sep 26 22:32:19 2017 ---
+[
+	{"username": "123ABC"},
+	{"password": ""},
+	{"result": "false"}
+]
+
+
+--- Tue Sep 26 22:44:20 2017 ---
+[
+	{"username": "123"},
+	{"password": ""},
+	{"result": "false"}
+]
+
+
+--- Tue Sep 26 22:46:11 2017 ---
+[
+	{"username": "7"},
+	{"password": "7"},
+	{"result": "false"}
+]
+
+
+--- Tue Sep 26 22:46:20 2017 ---
+[
+	{"username": ""},
+	{"password": ""},
+	{"result": "false"}
+]
+
+
+--- Tue Sep 26 22:49:02 2017 ---
+[
+	{"username": "123456"},
+	{"password": "654321"},
+	{"result": "true"}
+]
+
+
+--- Wed Sep 27 06:33:29 2017 ---
+[
+	{"username": ""},
+	{"password": ""},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 06:36:51 2017 ---
+[
+	{"username": "1"},
+	{"password": "9"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 06:37:22 2017 ---
+[
+	{"username": "12356"},
+	{"password": "654321"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 20:34:40 2017 ---
+[
+	{"username": ""},
+	{"password": ""},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 20:36:17 2017 ---
+[
+	{"username": "12"},
+	{"password": ""},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 20:37:27 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 20:37:58 2017 ---
+[
+	{"username": "123456"},
+	{"password": "654321"},
+	{"result": "true"}
+]
+
+
+--- Wed Sep 27 20:38:10 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Wed Sep 27 21:51:37 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 21:51:56 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 21:52:12 2017 ---
+[
+	{"username": "123456"},
+	{"password": "654321"},
+	{"result": "true"}
+]
+
+
+--- Wed Sep 27 21:54:16 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 21:54:25 2017 ---
+[
+	{"username": "23"},
+	{"password": "23"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 21:56:33 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 21:56:48 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Wed Sep 27 21:59:07 2017 ---
+[
+	{"username": "8"},
+	{"password": "8"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 21:59:15 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 21:59:26 2017 ---
+[
+	{"username": "456"},
+	{"password": "456"},
+	{"result": "true"}
+]
+
+
+--- Wed Sep 27 21:59:33 2017 ---
+[
+	{"username": "789"},
+	{"password": "789"},
+	{"result": "true"}
+]
+
+
+--- Wed Sep 27 22:01:56 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:03:38 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:07:17 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:10:42 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:22:05 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:25:03 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:29:13 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:31:23 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:37:08 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:41:03 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:41:15 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Wed Sep 27 22:41:21 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:42:29 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:45:19 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Wed Sep 27 22:50:45 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:50:54 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:51:05 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Wed Sep 27 22:52:50 2017 ---
+[
+	{"username": "11"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:57:41 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:57:52 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Wed Sep 27 22:58:04 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 18:46:13 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 18:49:03 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 18:49:15 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 18:49:28 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 18:51:57 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 18:52:32 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 20:04:30 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 20:10:18 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 20:10:57 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 20:11:14 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 20:11:26 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 20:17:48 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 21:32:08 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 21:45:16 2017 ---
+[
+	{"username": "7"},
+	{"password": "7"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 21:56:04 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 21:58:53 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 21:59:59 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 22:00:40 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 22:01:09 2017 ---
+[
+	{"username": "789"},
+	{"password": "789"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 22:01:47 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 22:02:02 2017 ---
+[
+	{"username": "AB"},
+	{"password": "ABCD32"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 22:02:12 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 22:02:39 2017 ---
+[
+	{"username": "1"},
+	{"password": "1"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 22:02:57 2017 ---
+[
+	{"username": "44"},
+	{"password": "44"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 22:03:15 2017 ---
+[
+	{"username": "7"},
+	{"password": "7"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 22:06:23 2017 ---
+[
+	{"username": "123456"},
+	{"password": "654321"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 22:06:45 2017 ---
+[
+	{"username": "22"},
+	{"password": "6"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 22:07:37 2017 ---
+[
+	{"username": "22"},
+	{"password": "99"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 23:17:41 2017 ---
+[
+	{"username": "123456"},
+	{"password": "654321"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 23:19:00 2017 ---
+[
+	{"username": "12"},
+	{"password": "99"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 23:19:14 2017 ---
+[
+	{"username": "336"},
+	{"password": "555"},
+	{"result": "false"}
+]
+
+
+--- Thu Sep 28 23:19:31 2017 ---
+[
+	{"username": "123456"},
+	{"password": "654321"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 23:19:46 2017 ---
+[
+	{"username": "789"},
+	{"password": "789"},
+	{"result": "true"}
+]
+
+
+--- Thu Sep 28 23:20:00 2017 ---
+[
+	{"username": "78"},
+	{"password": "89"},
+	{"result": "false"}
+]
+
+

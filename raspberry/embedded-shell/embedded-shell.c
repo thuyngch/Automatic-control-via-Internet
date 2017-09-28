@@ -22,7 +22,7 @@
 /******************************************************************************
  *	Definition
  *****************************************************************************/
-#define		EMBEDDED_BUFF_LEN			256
+#define		EMBEDDED_BUFF_LEN			255
 #define 	EMBEDDED_PORT 				8000
 #define 	EMBEDDED_NUM_CLIENT			5
 
@@ -49,21 +49,22 @@ uint8_t addr, fnc, num;
 uint8_t data[EMBEDDED_BUFF_LEN];
 
 int listenfd, connfd;
+int *new_sock;
 
 //-----------------------------------------------------------------------------
 /* Setup */
-listenfd = createSocket(EMBEDDED_PORT, EMBEDDED_NUM_CLIENT);
+listenfd = createServerSocket(EMBEDDED_PORT, EMBEDDED_NUM_CLIENT);
 getIPAddr(buff);
-printf(">>> Server is established:{IP: %s, Port: %d}\n\n", buff, EMBEDDED_PORT);
+printf(">>> Server is established:{IP: %s, Port: %d}\n", buff, getPort(listenfd));
 clearBuffer(buff, EMBEDDED_BUFF_LEN);
 
 //-----------------------------------------------------------------------------
 /* Wait for serving clients */
-while(1)
+while(connfd = accept(listenfd, (struct sockaddr*)NULL, (socklen_t*)NULL))
 {
 	//-Get data-//
-	connfd = waitDataSocket(listenfd, buff, EMBEDDED_BUFF_LEN);
-	// printf(">>> Received data: %s\n\n", buff);
+	read(connfd, buff, EMBEDDED_BUFF_LEN);
+	puts(">");
 
 	//-Decode frame and serve for client-//
 	for(int i = 0; i < 20; i++)
@@ -75,9 +76,8 @@ while(1)
 		}
 	}
 
-	//-Close the connection-//
+	//-Clear buffer-//
 	clearBuffer(buff, EMBEDDED_BUFF_LEN);
-	closeConnection(connfd);
 }
 
 //-----------------------------------------------------------------------------

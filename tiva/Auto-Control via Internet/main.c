@@ -37,27 +37,6 @@ void main()
 
         /* User interface */
         uiServing();
-
-        //-Testing of [DataTransaction]-//
-//        if(flgICDI)
-//        {
-//            //-Remove ICDI interrupt flag-//
-//            flgICDI = false;
-//
-//            //-Connect to the server-//
-//            wifiConnectServer();
-//
-//            //-Send and receive data from the server-//
-//            wifiSendData(buff, buff+7);
-//            match_result = wifiRecData();
-//
-//            //-Display result into the Terminal-//
-//            clkDelayMs(100);
-//            if(match_result)
-//                icdiSendStr("\n>>> Verification is correct!\n");
-//            else
-//                icdiSendStr("\n>>> Verification is wrong!\n");
-//        }
     }
 }
 

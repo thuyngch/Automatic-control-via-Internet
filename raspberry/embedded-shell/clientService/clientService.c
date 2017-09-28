@@ -84,7 +84,7 @@ void answerClient(int connfd, uint8_t addr, uint8_t num, uint8_t data[])
 	frameEncode(0x00, fnc_answer, num, data, &num_ans, ans_data);
 
 	/* Print to the screen */
-	printf(">[Login]: {addr=%x, result=%d}\n", addr, ans_data[5]);
+	printf("  [Login] {addr=%x, result=%d}\n", addr, ans_data[5]);
 
 	/* Send the result to the client */
 	sendDataSocket(connfd, ans_data, num_ans);

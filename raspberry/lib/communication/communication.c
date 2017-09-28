@@ -23,24 +23,55 @@
  *
  *	Output	:	
  */
-int createSocket(int port, uint8_t numClient)
+int createServerSocket(int port, int numClient)
 {
-	/* Declare */
-    int listenfd, connfd;
-    struct sockaddr_in serv_addr; 
+        /* Declare */
+        int listenfd;
+        struct sockaddr_in serv_addr; 
+
+        /* Create a socket */
+        listenfd = socket(AF_INET, SOCK_STREAM, 0);
+        memset(&serv_addr, '0', sizeof(serv_addr));
+        serv_addr.sin_family = AF_INET;
+        serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+        serv_addr.sin_port = htons(port);
+
+        /* Server bind */
+        bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
+        listen(listenfd, numClient);
+
+        /* Return */
+        return listenfd;
+}
+//-----------------------------------------------------------------------------
+/*
+ *  Function: create a client socket
+ *
+ *  Input   :   
+ *
+ *  Output  :   client socket file descriptor
+ */
+int createClientSocket(const char *ip, int port)
+{
+    int connfd;
+    struct sockaddr_in client_addr; 
 
     /* Create a socket */
-    listenfd = socket(AF_INET, SOCK_STREAM, 0);
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    serv_addr.sin_port = htons(port); 
+    connfd = socket(AF_INET, SOCK_STREAM, 0);
+    client_addr.sin_family= AF_INET;
+    client_addr.sin_addr.s_addr= inet_addr(ip);
+    client_addr.sin_port= htons(port);
 
-    /* Server bind */
-    bind(listenfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); 
-    listen(listenfd, numClient);
+    /*require connection to server*/
+    if(connect(connfd, (struct sockaddr*) &client_addr, sizeof(client_addr)))
+    {
+        perror("connection failed: ");
+        exit(1);
+    }
+    fprintf(stderr, "%s\n", "You are connected to Server");
 
-    /* Return */
-    return listenfd;
+    /*return*/
+    return connfd;
 }
 //-----------------------------------------------------------------------------
 /*
@@ -121,5 +152,16 @@ void getIPAddr(char *str)
  *
  *  Output  :   
  */
+int getPort(int listenfd)
+{
+    /* Declare */
+    struct sockaddr_in sin;
+    socklen_t len = sizeof(sin);
 
+    /* Return */
+    if (getsockname(listenfd, (struct sockaddr *)&sin, &len) == -1)
+        return 0;
+    else
+        return ntohs(sin.sin_port);
+}
 //-----------------------------------------------------------------------------

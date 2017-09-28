@@ -93,11 +93,27 @@ static void uiPageUsr(t_KpBtn readbtn)
     //-------------------------------------------------------------------------
     else if(readbtn == BTN(Cfm))
     {
-        lcdClearScreen();
-        lcdDisplay("Password:");
+        if(usr_count == 0)
+        {
+            //-Overflow notification-//
+            lcdClearScreen();
+            lcdDisplay("Empty");
 
-        pageState = page_pass;
-        readBtn = BTN(None);
+            //-Delay interval-//
+            clkDelayMs(1000);
+
+            //-Return to the current state-//
+            lcdClearScreen();
+            lcdDisplay("Username:");
+        }
+        else
+        {
+            lcdClearScreen();
+            lcdDisplay("Password:");
+
+            pageState = page_pass;
+            readBtn = BTN(None);
+        }
         return;
     }
     //-------------------------------------------------------------------------
@@ -185,8 +201,24 @@ static void uiPagePass(t_KpBtn readbtn)
     //-------------------------------------------------------------------------
     else if(readbtn == BTN(Cfm))
     {
-        pageState = page_result;
-        uiPageResult(usr, pass);
+        if(pass_count == 0)
+        {
+            //-Overflow notification-//
+            lcdClearScreen();
+            lcdDisplay("Empty");
+
+            //-Delay interval-//
+            clkDelayMs(1000);
+
+            //-Return to the current state-//
+            lcdClearScreen();
+            lcdDisplay("Password:");
+        }
+        else
+        {
+            pageState = page_result;
+            uiPageResult(usr, pass);
+        }
         return;
     }
     //-------------------------------------------------------------------------
@@ -264,16 +296,21 @@ static void uiPageResult(char *usr, char *pass)
     /* Receive data */
     match_result = wifiRecData();
 
+    /* Disconnect from the server */
+    wifiDisconnectServer();
+
     /* Display the result */
     lcdClearScreen();
     if(match_result)
     {
         lcdDisplay("Valid");
+        icdiSendStr("\r\n>> Valid verification\r\n");
         actServe(true);
     }
     else
     {
         lcdDisplay("Invalid");
+        icdiSendStr("\r\n>> Invalid verification\r\n");
         clkDelayMs(5000);
     }
 
