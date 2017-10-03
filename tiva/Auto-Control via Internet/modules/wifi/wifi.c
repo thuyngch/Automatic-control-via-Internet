@@ -54,7 +54,7 @@ static void espSetupProtocol(uint32_t timeout)
         wifiStartTimerCount(timeout);
 
     /* Connect to Access-Point */
-    espConnectWifi("Hoi-gay-kin-tang-8", "lebaloc8197");
+    espConnectWifi("T.H.E.Team", "the.team");
     wifiStartTimerCount(timeout);
     while(!wifiCheckATCmdComplete("OK"))
         wifiStartTimerCount(timeout);
@@ -217,7 +217,6 @@ static void wifiRefreshBuffer(uint8_t buff[], uint8_t len)
     for(i = 0; i < len; i++)
         buff[i] = 0;
 }
-//-----------------------------------------------------------------------------
 
 
 /******************************************************************************
@@ -255,7 +254,6 @@ bool wifiSetup()
 	icdiSendStr("\r\n>>> [WiFi] module is enabled.\r\n");
     lcdChangeLine(1);
     lcdDisplay("WiFi connected  ");
-    clkDelayMs(2000);
 
 	/* If no error, return false */
 	return false;
@@ -320,7 +318,7 @@ bool wifiCheckServerConnection()
 void wifiConnectServer()
 {
     /* Declare */
-    int8_t tmp;
+    int8_t tmp, false_count = 0;
 
     /* Select interrupt mode */
     sRegState.intMode = WIFI_INT_MODE_SETUP;
@@ -341,7 +339,20 @@ void wifiConnectServer()
         if(tmp == 1)
             break;
         if(tmp == -1)
+        {
+            if(++false_count == WIFI_MAX_TRY)
+            {
+                lcdClearScreen();
+                lcdDisplay("Connection fail");
+                clkDelayMs(1000);
+                lcdClearScreen();
+                lcdDisplay("Check the server");
+                lcdChangeLine(1);
+                lcdDisplay("Then reset KIT");
+                while(1);
+            }
             clkDelayMs(2000);
+        }
     }
 
     /* Close interrupt mode */

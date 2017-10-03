@@ -24,46 +24,4 @@
 		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>lib/CLK.1.0.1.c</name>
-			<type>1</type>
-			<locationURI>PARENT-4-PROJECT_LOC/ccs/TM4C1294NCPDT/lib/version%201.0.1/driver/CLK.1.0.1.c</locationURI>
-		</link>
-		<link>
-			<name>lib/GPIO.1.0.1.c</name>
-			<type>1</type>
-			<locationURI>PARENT-4-PROJECT_LOC/ccs/TM4C1294NCPDT/lib/version%201.0.1/driver/GPIO.1.0.1.c</locationURI>
-		</link>
-		<link>
-			<name>lib/LAUNCHPAD.1.0.1.c</name>
-			<type>1</type>
-			<locationURI>PARENT-4-PROJECT_LOC/ccs/TM4C1294NCPDT/lib/version%201.0.1/driver/LAUNCHPAD.1.0.1.c</locationURI>
-		</link>
-		<link>
-			<name>lib/LCD162.1.0.1.c</name>
-			<type>1</type>
-			<locationURI>PARENT-4-PROJECT_LOC/ccs/TM4C1294NCPDT/lib/version%201.0.1/driver/LCD162.1.0.1.c</locationURI>
-		</link>
-		<link>
-			<name>lib/TIMER.1.0.1.c</name>
-			<type>1</type>
-			<locationURI>PARENT-4-PROJECT_LOC/ccs/TM4C1294NCPDT/lib/version%201.0.1/driver/TIMER.1.0.1.c</locationURI>
-		</link>
-		<link>
-			<name>lib/UART.1.0.1.c</name>
-			<type>1</type>
-			<locationURI>PARENT-4-PROJECT_LOC/ccs/TM4C1294NCPDT/lib/version%201.0.1/driver/UART.1.0.1.c</locationURI>
-		</link>
-		<link>
-			<name>lib/driverlib.lib</name>
-			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/ti/Tivaware/driverlib/ccs/Debug/driverlib.lib</locationURI>
-		</link>
-		<link>
-			<name>lib/uartstdio.c</name>
-			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/ti/Tivaware/utils/uartstdio.c</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

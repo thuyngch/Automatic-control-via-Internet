@@ -19,9 +19,9 @@
 #include <string.h>
 
 /* Driver */
-#include <GPIO.1.0.1.h>
-#include <UART.1.0.1.h>
-#include <CLK.1.0.1.h>
+#include "../../lib/GPIO.1.0.1.h"
+#include "../../lib/UART.1.0.1.h"
+#include "../../lib/CLK.1.0.1.h"
 
 
 /**************************************************************************************************

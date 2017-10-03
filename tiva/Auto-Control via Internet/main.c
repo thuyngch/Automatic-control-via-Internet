@@ -1,6 +1,6 @@
 /*
- *	Author	    : Thuy Nguyen-Chinh.
- *	Date	    : Sep 04, 2017
+ *	Author      : Thuy Nguyen-Chinh.
+ *	Date        : Sep 04, 2017
  *	Description : This is the main file of the project.
  *	Version	    : 1.0.1.
  */
@@ -18,9 +18,6 @@
  *****************************************************************************/
 void main()
 {
-    /* Declare */
-//    bool match_result = false;
-
     /* Setup */
     systemSetup();
 

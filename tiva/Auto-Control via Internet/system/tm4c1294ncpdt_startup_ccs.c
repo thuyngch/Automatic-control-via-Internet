@@ -253,7 +253,7 @@ FaultISR(void)
     //
     // Enter an infinite loop.
     //
-    icdiSendStr("FaultISR");
+    icdiSendStr("\r\n>>> FaultISR\r\n");
     while(1)
     {
     }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialogSettings">
-		<item value="0" key="DIALOG_X_ORIGIN"/>
-		<item value="0" key="DIALOG_Y_ORIGIN"/>
+		<item value="573" key="DIALOG_X_ORIGIN"/>
+		<item value="27" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="220" key="dialogHeight"/>
-		<item value="320" key="dialogWidth"/>
+		<item value="168" key="dialogHeight"/>
+		<item value="314" key="dialogWidth"/>
 		<list key="textEntries">
 			<item value="1"/>
 			<item value="2"/>
@@ -25,8 +25,31 @@
 			<item value="s"/>
 		</list>
 	</section>
+	<section name="PreferencesImportWizard">
+		<item value="/home/antiaegis/ti/ccsv7/eclipse/theme-91.epf" key=""/>
+		<item value="/home/antiaegis/ti/ccsv7/eclipse/theme-93.epf" key=""/>
+		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="/home/antiaegis/ti/ccsv7/eclipse/theme-93.epf"/>
+			<item value="/home/antiaegis/ti/ccsv7/eclipse/theme-91.epf"/>
+			<item value="/home/antiaegis/ti/ccsv7/eclipse/theme-790.epf"/>
+			<item value="/home/antiaegis/ti/ccsv7/eclipse/theme/theme-30.epf"/>
+		</list>
+	</section>
 	<section name="MemoryDumperFillAction">
 		<item value="LM_ICDI" key="com.ti.ccstudio.system.setup.ui.editors.connectionType"/>
 		<item value="Stellaris In-Circuit Debug Interface" key="com.ti.ccstudio.system.setup.ui.editors.connectionName"/>
+	</section>
+	<section name="InstallationDialogSettings">
+		<item value="798" key="DIALOG_WIDTH"/>
+		<item value="1|Cantarell|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="741" key="DIALOG_HEIGHT"/>
+		<item value="284" key="DIALOG_X_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="ImportExportAction">
+		<item value="org.eclipse.ui.wizards.import.Preferences" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
 	</section>
 </section>

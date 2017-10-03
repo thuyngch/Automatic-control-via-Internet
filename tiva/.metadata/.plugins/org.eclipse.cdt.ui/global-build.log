@@ -1,57 +1,7 @@
 
 **** Build of configuration Debug for project Auto-Control via Internet ****
 
-/home/chinhthuy/ti/ccsv7/utils/bin/gmake -k -j 4 all -O 
-Building file: ../main.c
-Invoking: ARM Compiler
-"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="main.d"  "../main.c"
-Finished building: ../main.c
- 
-Building file: ../modules/actuator/actuator.c
-Invoking: ARM Compiler
-"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="modules/actuator/actuator.d" --obj_directory="modules/actuator"  "../modules/actuator/actuator.c"
-Finished building: ../modules/actuator/actuator.c
- 
-Building file: ../modules/icdi/icdi.c
-Invoking: ARM Compiler
-"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="modules/icdi/icdi.d" --obj_directory="modules/icdi"  "../modules/icdi/icdi.c"
-Finished building: ../modules/icdi/icdi.c
- 
-Building file: ../modules/lcd/lcd.c
-Invoking: ARM Compiler
-"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="modules/lcd/lcd.d" --obj_directory="modules/lcd"  "../modules/lcd/lcd.c"
-Finished building: ../modules/lcd/lcd.c
- 
-Building file: ../modules/keypad/keypad.c
-Invoking: ARM Compiler
-"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="modules/keypad/keypad.d" --obj_directory="modules/keypad"  "../modules/keypad/keypad.c"
-Finished building: ../modules/keypad/keypad.c
- 
-Building file: ../system/system.c
-Invoking: ARM Compiler
-"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="system/system.d" --obj_directory="system"  "../system/system.c"
-Finished building: ../system/system.c
- 
-Building file: ../modules/ui/ui.c
-Invoking: ARM Compiler
-"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="modules/ui/ui.d" --obj_directory="modules/ui"  "../modules/ui/ui.c"
-Finished building: ../modules/ui/ui.c
- 
-Building file: ../system/tm4c1294ncpdt_startup_ccs.c
-Invoking: ARM Compiler
-"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="system/tm4c1294ncpdt_startup_ccs.d" --obj_directory="system"  "../system/tm4c1294ncpdt_startup_ccs.c"
-Finished building: ../system/tm4c1294ncpdt_startup_ccs.c
- 
-Building file: ../modules/wifi/wifi.c
-Invoking: ARM Compiler
-"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="modules/wifi/wifi.d" --obj_directory="modules/wifi"  "../modules/wifi/wifi.c"
-Finished building: ../modules/wifi/wifi.c
- 
-Building target: Auto-Control via Internet.out
-Invoking: ARM Linker
-"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Auto-Control via Internet.map" --heap_size=0 --stack_size=1024 -i"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/lib" -i"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_17.6.0.STS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Auto-Control via Internet_linkInfo.xml" --rom_model -o "Auto-Control via Internet.out" "./main.obj" "./lib/CLK.1.0.1.obj" "./lib/GPIO.1.0.1.obj" "./lib/LAUNCHPAD.1.0.1.obj" "./lib/LCD162.1.0.1.obj" "./lib/TIMER.1.0.1.obj" "./lib/UART.1.0.1.obj" "./lib/uartstdio.obj" "./modules/actuator/actuator.obj" "./modules/icdi/icdi.obj" "./modules/keypad/keypad.obj" "./modules/lcd/lcd.obj" "./modules/ui/ui.obj" "./modules/wifi/esp.obj" "./modules/wifi/frame.obj" "./modules/wifi/wifi.obj" "./system/system.obj" "./system/tm4c1294ncpdt_startup_ccs.obj" "/home/chinhthuy/ti/Tivaware/driverlib/ccs/Debug/driverlib.lib" "../system/tm4c1294ncpdt.cmd"  -llibc.a 
-<Linking>
-Finished building target: Auto-Control via Internet.out
- 
+/home/antiaegis/ti/ccsv7/utils/bin/gmake -k -j 4 all -O 
+gmake[1]: 'Auto-Control via Internet.out' is up to date.
 
 **** Build Finished ****

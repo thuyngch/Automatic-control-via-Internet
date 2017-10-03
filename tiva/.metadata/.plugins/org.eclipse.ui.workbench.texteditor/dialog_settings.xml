@@ -9,36 +9,36 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="LCD_Read2Nib" key="selection"/>
+		<item value="&quot;../../lib/UART.1.0.1.h&quot;" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="&lt;UART.1.0.1.h&gt;"/>
+			<item value="&quot;LAUNCHPAD.1.0.1.h&quot;"/>
+			<item value="&lt;GPIO.1.0.1.h&gt;"/>
 			<item value="LCD_Read2Nib"/>
 			<item value="0xF0"/>
 			<item value="gpioLow(lcdPortCtrl, 0x0F &lt;&lt; lcdDataOffset);"/>
 			<item value="lcdPortCtrl &amp;= ~(0x0F &lt;&lt; lcdDataOffset);"/>
 			<item value="*lcdPort"/>
-			<item value="__delay_cycles(LCD_DELAY*40);"/>
-			<item value="__delay_cycles(LCD_DELAY);"/>
-			<item value="0xF0 &gt;&gt; lcdDataOffset"/>
 		</list>
 		<list key="replacehistory">
+			<item value="&quot;../../lib/UART.1.0.1.h&quot;"/>
+			<item value="&quot;../../lib/LAUNCHPAD.1.0.1.h&quot;"/>
+			<item value="&quot;../../lib/LAUNCHPAD.1.0.1.h"/>
+			<item value="&quot;../../lib/GPIO.1.0.1.h&quot;"/>
 			<item value="0x0F"/>
 			<item value="gpioLow(lcdPortData, 0x0F &lt;&lt; lcdDataOffset);"/>
 			<item value="gpioLow(lcdPortCtrl, 0x0F &lt;&lt; lcdDataOffset);"/>
 			<item value="lcdPortCtrl"/>
-			<item value="clkDelayMs(2);"/>
-			<item value="clkDelayUs(50);"/>
-			<item value="clkDelayUs(50)"/>
-			<item value="clkDelay(50)"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="337" key="DIALOG_WIDTH"/>
-		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="574" key="DIALOG_HEIGHT"/>
+		<item value="305" key="DIALOG_WIDTH"/>
+		<item value="1|Cantarell|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="465" key="DIALOG_HEIGHT"/>
 		<item value="641" key="DIALOG_X_ORIGIN"/>
 		<item value="71" key="DIALOG_Y_ORIGIN"/>
 	</section>

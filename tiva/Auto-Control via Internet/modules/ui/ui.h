@@ -12,8 +12,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <GPIO.1.0.1.h>
-#include <UART.1.0.1.h>
+#include "../../lib/GPIO.1.0.1.h"
+#include "../../lib/UART.1.0.1.h"
 
 #include "../pin_def.h"
 #include "../keypad/keypad.h"

@@ -13,9 +13,9 @@
 #include <stdbool.h>
 
 /* Driver */
-#include <GPIO.1.0.1.h>
-#include <UART.1.0.1.h>
-#include <TIMER.1.0.1.h>
+#include "../../lib/GPIO.1.0.1.h"
+#include "../../lib/UART.1.0.1.h"
+#include "../../lib/TIMER.1.0.1.h"
 
 /* Project */
 #include "../pin_def.h"
@@ -40,8 +40,11 @@
 #define WIFI_TIMEOUT            1200000
 
 /* IP address and Port of the server */
-#define WIFI_SERVER_IP          "192.168.100.19"
+#define WIFI_SERVER_IP          "192.168.1.246"
 #define WIFI_SERVER_PORT        8000
+
+/* Max try */
+#define WIFI_MAX_TRY            6
 
 
 /******************************************************************************
