@@ -26,6 +26,7 @@
 #include "../modules/keypad/keypad.h"
 #include "../modules/lcd/lcd.h"
 #include "../modules/wifi/wifi.h"
+#include "../modules/account/account.h"
 
 
 /******************************************************************************

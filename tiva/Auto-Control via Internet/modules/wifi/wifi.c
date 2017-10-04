@@ -54,7 +54,7 @@ static void espSetupProtocol(uint32_t timeout)
         wifiStartTimerCount(timeout);
 
     /* Connect to Access-Point */
-    espConnectWifi("T.H.E.Team", "the.team");
+    espConnectWifi("THE", "12345678");
     wifiStartTimerCount(timeout);
     while(!wifiCheckATCmdComplete("OK"))
         wifiStartTimerCount(timeout);

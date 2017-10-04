@@ -285,6 +285,8 @@ static void uiPageResult(char *usr, char *pass)
     /* Declare */
     bool match_result = false;
 
+    /* Pre-check */
+
     /* Wait for server */
     lcdClearScreen();
     lcdDisplay("Verifying...");
