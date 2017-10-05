@@ -1,7 +1,0 @@
-
-**** Build of configuration Debug for project Auto-Control via Internet ****
-
-/home/chinhthuy/ti/ccsv7/utils/bin/gmake -k -j 4 all -O 
-gmake[1]: 'Auto-Control via Internet.out' is up to date.
-
-**** Build Finished ****
