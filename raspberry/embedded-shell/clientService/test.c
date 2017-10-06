@@ -108,10 +108,11 @@ int main(int argc, char *argv[])
 
 	/* Test for [serveClient] */
 	num_data = 7;
-	char usr[] = "123", pass[] = "234";
+	char usr[] = "123", pass[] = "123";
 	sprintf(data, "%s %s", usr, pass);
 	data[strlen(usr)] = '\0';
-	serveClient(0x01, fnc_login, num_data, data);
+	int connfd = 5;
+	serveClient(connfd ,0x01, fnc_login, num_data, data);
 
 	/* Return */
 	return 0;

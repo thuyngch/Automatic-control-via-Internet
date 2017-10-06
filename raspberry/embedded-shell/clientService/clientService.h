@@ -54,7 +54,7 @@ answerClient
 
 /* Service [Login]*/
 void
-login
+embedded_login
 (uint8_t num, uint8_t data[], uint8_t *num_out, uint8_t out[]);
 
 

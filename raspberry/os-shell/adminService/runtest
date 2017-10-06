@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Compile
+gcc -g -o test  test.c  						\
+				adminService.c  				\
+				backup/backup.c 				\
+				../os-shell/login/login.c		\
+				../../lib/json/json.c  			\
+				../../lib/frame/frame.c  		\
+				../../lib/fileproc/fileproc.c  	\
+				../../lib/logfile/logfile.c 	\
+				-ljansson
+
+# Run
+./test 

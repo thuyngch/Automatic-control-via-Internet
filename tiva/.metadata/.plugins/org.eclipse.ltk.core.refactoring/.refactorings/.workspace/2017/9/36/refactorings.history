@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;Auto-control via Internet&apos;" deleteContents="false" description="Delete resource &apos;Auto-control via Internet&apos;" element1="/Auto-control via Internet" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1504535457369"/>&#x0A;<refactoring comment="Delete resource &apos;Auto-Control via Internet/lib/ti/driverlib.lib&apos;" deleteContents="false" description="Delete resource &apos;Auto-Control via Internet/lib/ti/driverlib.lib&apos;" element1="/Auto-Control via Internet/lib/ti/driverlib.lib" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1504535613706"/>
-</session>
