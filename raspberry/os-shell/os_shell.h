@@ -17,11 +17,13 @@
 #include "../lib/fileproc/fileproc.h"
 #include "../lib/frame/frame.h"
 #include "../lib/platform/thread.h"
-// #include "../lib/json/json.h"
 #include "../lib/communication/communication.h"
-#include "../embedded-shell/embedded_shell.h"
-#include "./serverService/backup.h"
 #include "../lib/bufferproc/bufferproc.h"
+
+#include "./adminService/management/management.h"
+#include "./adminService/backup/backup.h"
+#include "adminService/adminService.h"
+
 
 /*
 * os-shell

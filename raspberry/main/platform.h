@@ -9,13 +9,14 @@
 
 /*common private lib*/
 #include "../lib/communication/communication.h"
-// #include "../lib/json/json.h"
 #include "../lib/platform/thread.h"
-#include "../os-shell/os_shell.h"
+/*include shell*/
 #include "../embedded-shell/embedded_shell.h"
+#include "../os-shell/os_shell.h"
 
 /*
-*	
+*	func platform
+* 	function: create os_shell thread & embedded shell thread
 */
 void *platform(void *thread_exit);
 

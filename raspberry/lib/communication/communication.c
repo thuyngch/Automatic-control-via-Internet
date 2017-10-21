@@ -26,13 +26,13 @@
 int createServerSocket(int port, uint8_t numClient)
 {
         /* Declare */
-        int listenfd, connfd;
+        int listenfd;
         struct sockaddr_in serv_addr; 
 
         /* Create a socket */
         listenfd = socket(AF_INET, SOCK_STREAM, 0);
         serv_addr.sin_family = AF_INET;
-        serv_addr.sin_addr.s_addr = inet_addr(INADDR_ANY);//htonl(INADDR_ANY);
+        serv_addr.sin_addr.s_addr = INADDR_ANY;
         serv_addr.sin_port = htons(port); 
 
         /* Server bind */
@@ -65,7 +65,7 @@ int createClientSocket(const char *ip, int port)
         client_addr.sin_addr.s_addr= inet_addr(ip);
         client_addr.sin_port= htons(port);
         /*require connection to server*/
-        if(connect(connfd, (struct sockaddr*) &client_addr, sizeof(client_addr))) exit(1);
+        if(connect(connfd, (struct sockaddr*) &client_addr, sizeof(client_addr))) {perror("connection failed: ") ; exit(1);}
         fprintf(stderr, "%s\n", "You are connected to Server");
 
         /*return*/
@@ -91,7 +91,7 @@ int waitDataSocket(int listenfd, uint8_t *buffer, uint16_t len)
 
 	/* Read data package into buffer */
 
-	//read(connfd, buffer, len);adhifsdafjaldfjsdalfjlfjalfjdalfjflajsldfjaslfjadlfjadflj
+	read(connfd, buffer, len);
 
 	/* Return */
 	return connfd;
@@ -153,5 +153,16 @@ void getIPAddr(char *str)
  *
  *  Output  :   
  */
+int getPort(int listenfd)
+{
+    /* Declare */
+    struct sockaddr_in sin;
+    socklen_t len = sizeof(sin);
 
+    /* Return */
+    if (getsockname(listenfd, (struct sockaddr *)&sin, &len) == -1)
+        return 0;
+    else
+        return ntohs(sin.sin_port);
+}
 //-----------------------------------------------------------------------------
