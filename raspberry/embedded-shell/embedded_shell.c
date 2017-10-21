@@ -52,7 +52,11 @@ void *embedded_shell(void *thread_exit)
 	/* Setup */
 	listenfd = createServerSocket(EMBEDDED_PORT, EMBEDDED_NUM_CLIENT);
 	getIPAddr(buff);
+<<<<<<< HEAD
 	printf("> Server for users is established on: {IP: %s, Port: %d}\n\n", buff, getPort(listenfd));
+=======
+	printf(">>> Server for users is established on: {IP: %s, Port: %d}\n\n", buff, getPort(listenfd));
+>>>>>>> 54c690b6c141ea37d5ffcfb07b91188db302b08e
 	clearBuffer(buff, EMBEDDED_BUFF_LEN);
 
 	//-----------------------------------------------------------------------------
@@ -61,7 +65,11 @@ void *embedded_shell(void *thread_exit)
 	{
 		//-Get data-//
 		read(connfd, buff, EMBEDDED_BUFF_LEN);
+<<<<<<< HEAD
 		// puts(">");
+=======
+		puts(">");
+>>>>>>> 54c690b6c141ea37d5ffcfb07b91188db302b08e
 
 		//-Decode frame and serve for client-//
 		for(int i = 0; i < 20; i++)
@@ -72,6 +80,10 @@ void *embedded_shell(void *thread_exit)
 				break;
 			}
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 54c690b6c141ea37d5ffcfb07b91188db302b08e
 		//-Clear buffer-//
 		clearBuffer(buff, EMBEDDED_BUFF_LEN);
 	}

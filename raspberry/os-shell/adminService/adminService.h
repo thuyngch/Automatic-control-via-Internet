@@ -35,7 +35,11 @@ typedef enum
 	fnc_answer			,//4
 } t_fnc;
 
+<<<<<<< HEAD
 /* admin service */
+=======
+/* Client service */
+>>>>>>> 54c690b6c141ea37d5ffcfb07b91188db302b08e
 typedef struct 
 {
 	uint8_t		addr;
