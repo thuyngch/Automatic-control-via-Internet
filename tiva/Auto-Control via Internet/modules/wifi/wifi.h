@@ -40,7 +40,7 @@
 #define WIFI_TIMEOUT            1200000
 
 /* IP address and Port of the server */
-#define WIFI_SERVER_IP          "192.168.1.133"
+#define WIFI_SERVER_IP          "113.172.178.10"
 #define WIFI_SERVER_PORT        8000
 
 /* Max try */

@@ -19,28 +19,6 @@
 
 
 /******************************************************************************
- *  Private
- *****************************************************************************/
-/*
- *  Function: xxxxxxxxxx
- *
- *  Input   : xxxxx: xxxxxxxxxx
- *            xxxxx: xxxxxxxxxx
- *
- *  Output  : xxxxx: xxxxxxxxxx
- *            xxxxx: xxxxxxxxxx
- */
-static int sum(uint8_t data[], uint8_t len)
-{
-    int res = 0;
-    for(int i = 0; i < len; i++)
-        res += data[i];
-    return res;
-}
-//-----------------------------------------------------------------------------
-
-
-/******************************************************************************
  *  Function
  *****************************************************************************/
 /*
@@ -54,16 +32,9 @@ bool accPreCheck(char* usrname)
 {
     /* Declare */
     char data[ACC_LEN+1];           // Buffer to load username
-
-    uint8_t oddgr[ACC_LEN];         // Group of odd digits
-    uint8_t oddlen = 0;             // Number of odd digits
-    
-    uint8_t evengr[ACC_LEN];        // Group of even digits
-    uint8_t evenlen = 0;            // Number of even digits
-
     uint8_t oddn = 0;               // Number of odd digit exceeds 4
-
     int validity;                   // Result value
+    uint8_t i;						// Counter to scan data
 
     /* Convert string to numbers */
     strcpy(data, usrname);
@@ -75,24 +46,18 @@ bool accPreCheck(char* usrname)
             data[i] -= 'A' + 10;
     }
 
-    /* Find for odd group */
-    for(int i = 0; i < ACC_LEN; i++)
-        if(data[i] % 2)
-            oddgr[oddlen++] = data[i];
-
-    /* Find for number of odd digits which have value that exceed 4 */
-    for(int i = 0; i < oddlen; i++)
-        if(oddgr[i] > 4)
-            oddn++;
-
-    /* Find for even group */
-    for(int i = 0; i < ACC_LEN; i++)
-        if(!(data[i] % 2))
-            evengr[evenlen++] = data[i];
-
-    /* Verify the validity */
-    validity  = 2*sum(oddgr, oddlen);
-    validity += sum(evengr, evenlen);
+    /* Calculate the validity */
+    for(i = 0; i < ACC_LEN; i++)
+    {
+    	if(i%2)
+    		validity += data[i];
+    	else
+    	{
+    		validity += 2*data[i];
+    		if(data[i] > 4)
+    			oddn++;
+    	}
+    }
     validity += oddn;
 
     /* Return */

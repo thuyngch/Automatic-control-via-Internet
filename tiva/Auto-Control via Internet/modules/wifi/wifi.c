@@ -54,7 +54,7 @@ static void espSetupProtocol(uint32_t timeout)
         wifiStartTimerCount(timeout);
 
     /* Connect to Access-Point */
-    espConnectWifi("THE", "12345678");
+    espConnectWifi("P819", "lebaloc8194");
     wifiStartTimerCount(timeout);
     while(!wifiCheckATCmdComplete("OK"))
         wifiStartTimerCount(timeout);
@@ -369,7 +369,19 @@ void wifiConnectServer()
  */
 void wifiDisconnectServer()
 {
+    /* Send command to disconnect from the server */
     espDisconnectTCP();
+
+    /* Wait for disconnection */
+//    wifiRefreshBuffer(wifiBuff, 255);
+//    buffCount = 0;
+//    sRegState.flgUartInt = WIFI_INT_MODE_SETUP;
+//
+//    wifiStartTimerCount(WIFI_TIMEOUT);
+//    while(!wifiCheckATCmdComplete("OK"))
+//        wifiStartTimerCount(WIFI_TIMEOUT);
+//
+//    sRegState.flgUartInt = WIFI_INT_MODE_NONE;
 }
 //-----------------------------------------------------------------------------
 /*

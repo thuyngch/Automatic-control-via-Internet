@@ -1,0 +1,24 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../modules/account/account.c 
+
+C_DEPS += \
+./modules/account/account.d 
+
+OBJS += \
+./modules/account/account.obj 
+
+OBJS__QUOTED += \
+"modules/account/account.obj" 
+
+C_DEPS__QUOTED += \
+"modules/account/account.d" 
+
+C_SRCS__QUOTED += \
+"../modules/account/account.c" 
+
+
