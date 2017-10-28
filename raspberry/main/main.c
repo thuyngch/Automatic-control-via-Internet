@@ -20,11 +20,7 @@
 #include "../lib/platform/thread.h"
 #include "../lib/bufferproc/bufferproc.h"
 
-<<<<<<< HEAD
 /*include platform for shells*/
-=======
-/*include platform for shell*/
->>>>>>> 54c690b6c141ea37d5ffcfb07b91188db302b08e
 #include "platform.h"
 
 /*include shell*/

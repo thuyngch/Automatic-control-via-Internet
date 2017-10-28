@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # Remove
-rm main
+# rm main
 clear
 
 # Compile
-gcc -g -o main  main.c  													\
+ gcc -g -std=gnu99 -o main  main.c  													\
 				platform.c  												\
 				../lib/frame/frame.c  										\
 				../lib/platform/thread.c  									\

@@ -1,11 +1,7 @@
 #include "history.h"
 
 #define  acc_folder_dir "../kernel/history/"
-<<<<<<< HEAD
-#define HIS_BUFF_LEN	4096
-=======
 #define HIS_BUFF_LEN	512
->>>>>>> 54c690b6c141ea37d5ffcfb07b91188db302b08e
 
 void history(int *connfd, uint8_t addr, uint8_t fnc)
 {
@@ -15,14 +11,14 @@ void history(int *connfd, uint8_t addr, uint8_t fnc)
       buff = (uint8_t*) malloc(HIS_BUFF_LEN);
       /*get total number of files in /user*/
       *buff = num_of_file_in_folder(account_folder_dir);   
-      if (!buff[0]) exit(1);
+      if (!buff[0]) return;
       /*send num of file in /user to PC*/
       if(send(*connfd, buff, 1, 0) == -1) return;
 
       /*send file name and content of file in order*/
       struct dirent *dp;
 	DIR *dir = opendir(account_folder_dir);
-	if (dir == NULL) exit(1);
+	if (dir == NULL) return;
 
 	while((dp = readdir(dir)) != NULL) //get file name by file name
 	{
@@ -30,7 +26,7 @@ void history(int *connfd, uint8_t addr, uint8_t fnc)
 		{
 			/*send file name to PC*/
 			strcpy(buff, dp -> d_name);
-			fprintf(stderr, "%s\n", buff);
+			// fprintf(stderr, "%s\n", buff);
 			send(*connfd, buff, HIS_BUFF_LEN, 0);
 
 			/*create file path*/
@@ -44,5 +40,6 @@ void history(int *connfd, uint8_t addr, uint8_t fnc)
 		}
 	}	
 	closedir(dir);
+	free(buff);
 	fprintf(stderr, "%s\n", "> history service finished");
 }

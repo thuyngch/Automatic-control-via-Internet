@@ -1,6 +1,6 @@
 #include "management.h"
 #define 	ADMIN_BUFF_LEN 			64
-#define 	ACCOUNT_PATH_LEN 			64
+#define 	ACCOUNT_PATH_LEN 			128
 
 void adaptPath(const char *rootPath, char *absolutePath)
 {
@@ -31,7 +31,7 @@ void sync_form_PC(int *connfd, const char *account_folder_dir)
 	{
 		/*recv file name*/
 		read(*connfd, buff, ADMIN_BUFF_LEN);
-		fprintf(stderr, "%s\n", buff);
+		// fprintf(stderr, "%s\n", buff);
 		adaptPath(account_folder_dir, buff);
 		FILE *file = fopen(buff, "w");
 		/*recv content of file from PC*/

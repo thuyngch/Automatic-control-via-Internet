@@ -14,7 +14,7 @@
 void	backup(int *connfd, uint8_t addr, uint8_t fnc) 
 {
 	fprintf(stderr, "> backup service for ad[%d] starting ...\n", addr);
-	const char account_folder_dir[64] = acc_folder_dir;
+	const char account_folder_dir[128] = acc_folder_dir;
       uint8_t *buff;
       buff = (uint8_t*) malloc(BACKUP_BUFF_LEN);
       /*get total number of files in /user*/
@@ -26,7 +26,7 @@ void	backup(int *connfd, uint8_t addr, uint8_t fnc)
       /*send file name and content of file in order*/
       struct dirent *dp;
 	DIR *dir = opendir(account_folder_dir);
-	if (dir == NULL) exit(1);
+	if (dir == NULL) return;
 
 	while((dp = readdir(dir)) != NULL) //get file name by file name
 	{
@@ -34,7 +34,7 @@ void	backup(int *connfd, uint8_t addr, uint8_t fnc)
 		{
 			/*send file name to PC*/
 			strcpy(buff, dp -> d_name);
-			fprintf(stderr, "%s\n", buff);
+			// fprintf(stderr, "%s\n", buff);
 			send(*connfd, buff, BACKUP_BUFF_LEN, 0);
 
 			/*create file path*/
