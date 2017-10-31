@@ -35,8 +35,10 @@ int main(int argc, char const *argv[])
 	pthread_t platform_thread; 	//declare thread name
 
 	/*run platform in parallel with main*/
+	
 	/*this platform will run os_shell & embedded_shell*/
 	if(!createThread(&platform_thread, platform, thread_exit)) exit(1);
+
 	/*force main to hang to wait for platform exited first*/
 	pthread_join(platform_thread, &thread_exit);
 

@@ -1,3 +1,10 @@
+/************************************
+* Date created: 	10-8-2017
+* Date finished: 	
+* Editor: Sublime Text 3
+* Author: Le Van Hoang Phuong
+* Description: 
+*************************************/
 #include 	"history.h"
 #define 	history_folder_dir 	"../raspberry/kernel/history/"
 #define 	HIS_BUFF_LEN 		512 //1MB
@@ -15,7 +22,6 @@ void history(int *connfd, uint8_t addr, uint8_t fnc)
 	}
 
 	uint8_t num_of_file = *buff;  //num of file in database
-	// fprintf(stderr, "num_of_file: %d\n", buff[0]);
 	if(!buff[0]) return;
 
 	/*create an empty folder on admin PCto store databases*/
@@ -25,7 +31,6 @@ void history(int *connfd, uint8_t addr, uint8_t fnc)
 	{
 		/*file name*/
 		recv(*connfd, buff, HIS_BUFF_LEN, 0);
-		// fprintf(stderr, "%s\n", buff);		
 
 		/*create file path*/
 		adaptPath(history_folder_dir, buff);

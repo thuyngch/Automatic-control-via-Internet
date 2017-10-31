@@ -1,5 +1,11 @@
+/************************************
+* Date created: 	10-8-2017
+* Date finished: 	
+* Editor: Sublime Text 3
+* Author: Le Van Hoang Phuong
+* Description: 
+*************************************/
 #include 	"adminService.h"
-
 #define 	ESC 		27
 
 void disp_fnc_menu()

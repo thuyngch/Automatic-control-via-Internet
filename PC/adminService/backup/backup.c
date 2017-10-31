@@ -1,21 +1,24 @@
+/************************************
+* Date created: 	10-8-2017
+* Date finished: 	
+* Editor: Sublime Text 3
+* Author: Le Van Hoang Phuong
+* Description: backup service on PC
+*************************************/
 #include "backup.h"
-
-#define ADMIN_BUFF_LEN 		64
+// user define
+#define ADMIN_BUFF_LEN 		128
 #define ACCOUNT_PATH_LEN 	128
 #define account_folder_dir 	"../raspberry/kernel/accounts/user/"
 
-
+/*local adapt path func*/
 void adaptPath(const char *rootPath, char *absolutePath)
 {
-	// char *path;
-	// path = (char*) malloc(ACCOUNT_PATH_LEN+1);
 	char path[ACCOUNT_PATH_LEN];
 	strcpy(path, rootPath);
 	strcat(path, absolutePath);
 	clearBuffer(absolutePath, (uint16_t) strlen(absolutePath));	
 	strcpy(absolutePath, path);
-	// fprintf(stderr, "%s\n", absolutePath);
-	// free(path);
 
 }
 
@@ -30,7 +33,6 @@ void backup(int *connfd, uint8_t addr, uint8_t fnc)
 		return;
 	}	
 	uint8_t num_of_file = *buff;  //num of file in database
-	// fprintf(stderr, "%s : %d\n", "num_of_file", buff[0]);
 
 	/*create an empty folder on admin PCto store databases*/
 	emptyFolder(account_folder_dir);	//remove all existing files in accounts/
@@ -39,12 +41,10 @@ void backup(int *connfd, uint8_t addr, uint8_t fnc)
 	for (int i = 0; i < num_of_file; ++i)
 	{
 		/*file name*/
-		recv(*connfd, buff, ADMIN_BUFF_LEN, 0);
-		// fprintf(stderr, "%s\n", buff);
+		if(!recv(*connfd, buff, ADMIN_BUFF_LEN, 0)) return;
 
 		/*create file path*/
 		adaptPath(account_folder_dir, buff);
-		// fprintf(stderr, "%s\n", account_folder_dir);
 		FILE *file = fopen(buff, "w");
 		recv(*connfd, buff, ADMIN_BUFF_LEN, 0);
 		

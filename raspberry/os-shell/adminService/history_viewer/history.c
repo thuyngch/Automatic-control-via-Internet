@@ -1,3 +1,10 @@
+/************************************
+* Date created: 	10-8-2017
+* Date finished: 	
+* Editor: Sublime Text 3
+* Author: Le Van Hoang Phuong
+* Description: 
+*************************************/
 #include "history.h"
 
 #define  acc_folder_dir "../kernel/history/"
@@ -5,12 +12,12 @@
 
 void history(int *connfd, uint8_t addr, uint8_t fnc)
 {
-	fprintf(stderr, "> history service for ad[%d] starting ...\n", addr);
+	fprintf(stderr, "> history service for ad [%d] starting ...\n", addr);
 	const char account_folder_dir[64] = acc_folder_dir;
       uint8_t *buff;
       buff = (uint8_t*) malloc(HIS_BUFF_LEN);
       /*get total number of files in /user*/
-      *buff = num_of_file_in_folder(account_folder_dir);   
+      *buff = real_num_of_file(account_folder_dir);   
       if (!buff[0]) return;
       /*send num of file in /user to PC*/
       if(send(*connfd, buff, 1, 0) == -1) return;
@@ -22,11 +29,11 @@ void history(int *connfd, uint8_t addr, uint8_t fnc)
 
 	while((dp = readdir(dir)) != NULL) //get file name by file name
 	{
-		if (strcmp(dp -> d_name, ".") && strcmp(dp -> d_name, ".."))
+		strcpy(buff, dp ->d_name);
+		if (strcmp(buff, ".") && strcmp(buff, "..") && (buff[0] != '.') && (buff[1] != 'f'))
 		{
 			/*send file name to PC*/
-			strcpy(buff, dp -> d_name);
-			// fprintf(stderr, "%s\n", buff);
+			// strcpy(buff, dp -> d_name);
 			send(*connfd, buff, HIS_BUFF_LEN, 0);
 
 			/*create file path*/

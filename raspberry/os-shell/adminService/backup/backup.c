@@ -1,24 +1,24 @@
-/*************************************************************
-*	Date Created: 26-8-2017	                               *	
-*	Date finished:							 *
-*	Function:		Backup data from a server to another *
-*	Input:		None 						 *
-*	Output:		Not defined yet				 *
-*************************************************************/
+/************************************
+* Date created: 	10-8-2017
+* Date finished: 	
+* Editor: Sublime Text 3
+* Author: Le Van Hoang Phuong
+* Description: 
+*************************************/
 
 #include "backup.h"
 
 #define  acc_folder_dir "../kernel/accounts/user/"
-#define BACKUP_BUFF_LEN 64
+#define BACKUP_BUFF_LEN 128
 
 void	backup(int *connfd, uint8_t addr, uint8_t fnc) 
 {
-	fprintf(stderr, "> backup service for ad[%d] starting ...\n", addr);
+	fprintf(stderr, "> backup service for ad [%d] starting ...\n", addr);
 	const char account_folder_dir[128] = acc_folder_dir;
-      uint8_t *buff;
-      buff = (uint8_t*) malloc(BACKUP_BUFF_LEN);
+      uint8_t *buff = (uint8_t*) malloc(BACKUP_BUFF_LEN);
+
       /*get total number of files in /user*/
-      *buff = num_of_file_in_folder(account_folder_dir);   
+     	*buff = real_num_of_file(account_folder_dir);
       if (!buff[0]) return;
       /*send num of file in /user to PC*/
       if(send(*connfd, buff, 1, 0) == -1) return;
@@ -30,11 +30,10 @@ void	backup(int *connfd, uint8_t addr, uint8_t fnc)
 
 	while((dp = readdir(dir)) != NULL) //get file name by file name
 	{
-		if (strcmp(dp -> d_name, ".") && strcmp(dp -> d_name, ".."))
+		strcpy(buff, dp ->d_name);
+		if (strcmp(buff, ".") && strcmp(buff, "..") && (buff[0] != '.') && (buff[1] != 'f'))
 		{
 			/*send file name to PC*/
-			strcpy(buff, dp -> d_name);
-			// fprintf(stderr, "%s\n", buff);
 			send(*connfd, buff, BACKUP_BUFF_LEN, 0);
 
 			/*create file path*/
@@ -47,6 +46,7 @@ void	backup(int *connfd, uint8_t addr, uint8_t fnc)
 			send(*connfd, buff, BACKUP_BUFF_LEN, 0);
 		}
 	}	
+	free(buff);
 	closedir(dir);
 	fprintf(stderr, "%s\n", "> backup service finished");
 }
