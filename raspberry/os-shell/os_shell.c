@@ -1,13 +1,11 @@
+/************************************
+* Date created: 	10-8-2017
+* Date finished: 	
+* Editor: Sublime Text 3
+* Author: Le Van Hoang Phuong
+* Description: 
+*************************************/
 #include "os_shell.h"
-
-/*
-* 	AUTHOR: Le Van Hoang Phuong
-*	DATE START:
-*	DATE END:
-*	FUNCTION: control os-shell
-*	Input:	
-*	Output: 	
-*/
 
 #define	OS_BUFF_LEN			256
 #define 	OS_PORT 			9000
@@ -19,7 +17,7 @@
  *****************************************************************************/
 void *os_shell(void *thread_exit)
 {
-	fprintf(stderr, "%s\n", "--------------------------------------------------------------------------------");
+	fprintf(stderr, "%s\n", "-----------------------------------------------------------------");
 	fprintf(stderr, "%s\n", "> OS Shell set up ...");
 	/* Declare */
 	uint8_t buff[OS_BUFF_LEN];

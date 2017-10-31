@@ -20,11 +20,7 @@
 #include "../lib/platform/thread.h"
 #include "../lib/bufferproc/bufferproc.h"
 
-<<<<<<< HEAD
 /*include platform for shells*/
-=======
-/*include platform for shell*/
->>>>>>> 54c690b6c141ea37d5ffcfb07b91188db302b08e
 #include "platform.h"
 
 /*include shell*/
@@ -39,8 +35,10 @@ int main(int argc, char const *argv[])
 	pthread_t platform_thread; 	//declare thread name
 
 	/*run platform in parallel with main*/
+	
 	/*this platform will run os_shell & embedded_shell*/
 	if(!createThread(&platform_thread, platform, thread_exit)) exit(1);
+
 	/*force main to hang to wait for platform exited first*/
 	pthread_join(platform_thread, &thread_exit);
 

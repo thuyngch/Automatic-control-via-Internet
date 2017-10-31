@@ -1,10 +1,10 @@
-/*
- *	Date	: 26/08/2017.
- *	Content	: 
- */
-/******************************************************************************
- *	Include
- *****************************************************************************/
+/************************************
+* Date created: 	10-8-2017
+* Date finished: 	
+* Editor: Sublime Text 3
+* Author: Le Van Hoang Phuong
+* Description: 
+*************************************/
 #include "adminService.h"
 
 uint8_t frame_len(uint8_t frame[])
@@ -43,7 +43,7 @@ void serverService(int *connfd, uint8_t root_addr, uint8_t num_data_in, uint8_t 
 		/*recv service required*/
 		uint8_t buff[32];
 		uint8_t data_out[8];
-		fprintf(stderr, "%s\n\n", "> waiting for service required ...");
+		fprintf(stderr, "\n%s\n\n", "> waiting for service required ...");
 		if(!recv(*connfd, buff, 32, 0)) 
 		{
 			fprintf(stderr, "%s%d%s\n", "> admin [", root_addr, "] logged out"); 
