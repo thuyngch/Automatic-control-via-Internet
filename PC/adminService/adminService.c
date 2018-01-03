@@ -59,7 +59,7 @@ void adminService(int *connfd, ad_addr_list addr)
 				frameEncode(addr, (uint8_t)(readkey[0] - 48), 1, data_in, &num_data_out, data_out);
 				/*print frame to screen*/
 				// print_frame(data_out, num_data_out);
-				send(*connfd, data_out, num_data_out, 0);
+				send(*connfd, data_out, 32, 0);
 				serveAdmin(connfd, i, addr, (uint8_t)(readkey[0] - 48));
 					/*socket, serv_order, addr, fnc*/
 				break;

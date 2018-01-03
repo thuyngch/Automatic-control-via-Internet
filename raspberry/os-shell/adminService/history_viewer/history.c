@@ -8,7 +8,7 @@
 #include "history.h"
 
 #define  acc_folder_dir "../kernel/history/"
-#define HIS_BUFF_LEN	512
+#define HIS_BUFF_LEN	1024
 
 void history(int *connfd, uint8_t addr, uint8_t fnc)
 {
@@ -35,7 +35,7 @@ void history(int *connfd, uint8_t addr, uint8_t fnc)
 			/*send file name to PC*/
 			// strcpy(buff, dp -> d_name);
 			send(*connfd, buff, HIS_BUFF_LEN, 0);
-
+			sleep(1);
 			/*create file path*/
 			char path[HIS_BUFF_LEN];
 			strcpy(path, account_folder_dir);

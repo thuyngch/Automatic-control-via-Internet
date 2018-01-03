@@ -17,12 +17,14 @@ void sync_to_server(int *connfd, const char *account_folder_dir)
       uint8_t *buff;
       buff = (uint8_t*) malloc(BACKUP_BUFF_LEN);
       // *buff = num_of_file_in_folder(account_folder_dir);   
-     	*buff = real_num_of_file(account_folder_dir);
+     	*buff = (uint8_t)real_num_of_file(account_folder_dir); //something wrong with this count function
+     	fprintf(stderr, "%s : %d\n", "#file to sync", buff[0]);
       if (!buff[0]) return;
-      send(*connfd, buff, 1, 0);
+      send(*connfd, buff, BACKUP_BUFF_LEN, 0);
       /*send file name and content of file in order*/
       struct dirent *dp;
 	DIR *dir = opendir(account_folder_dir);
+
 
 	if (dir == NULL) return;
 	while((dp = readdir(dir)) != NULL)
@@ -32,11 +34,13 @@ void sync_to_server(int *connfd, const char *account_folder_dir)
 		{
 			strcpy(buff, dp -> d_name);
 			send(*connfd, buff, BACKUP_BUFF_LEN, 0);
+			usleep(10000);
 			char path[PATH_LEN];
-			strcpy(path, account_folder_dir);
+			strcpy(path, account_folder_dir);			
 			strcat(path, dp -> d_name);
-			readallfile(path, buff);
+			readallfile(path, buff);			
 			send(*connfd, buff, BACKUP_BUFF_LEN, 0);
+
 		}
 	}	
 	free(buff);

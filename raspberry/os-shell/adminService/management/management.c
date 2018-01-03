@@ -25,7 +25,7 @@ void sync_form_PC(int *connfd, const char *account_folder_dir)
 
 	fprintf(stderr, "%s\n", "> sync_form_PC starting ...");
 	uint8_t *buff = (uint8_t*) malloc(ADMIN_BUFF_LEN);
-	if(!recv(*connfd, buff, 1, 0))
+	if(!recv(*connfd, buff, ADMIN_BUFF_LEN, 0))
 	{
 		fprintf(stderr, "%s\n", "> Backup from server failed");
 		return;

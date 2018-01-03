@@ -43,7 +43,7 @@ void serverService(int *connfd, uint8_t root_addr, uint8_t num_data_in, uint8_t 
 		/*recv service required*/
 		uint8_t buff[32];
 		uint8_t data_out[8];
-		fprintf(stderr, "\n%s\n\n", "> waiting for service required ...");
+		fprintf(stderr, "\n%s\n\n", "> waiting for service desired ...");
 		if(!recv(*connfd, buff, 32, 0)) 
 		{
 			fprintf(stderr, "%s%d%s\n", "> admin [", root_addr, "] logged out"); 
@@ -57,6 +57,7 @@ void serverService(int *connfd, uint8_t root_addr, uint8_t num_data_in, uint8_t 
 				/*check addr ?= login-addr*/
 				if (root_addr != curr_addr) break;
 				/*callback function*/
+				fprintf(stderr, "%s: %d\n", "fnc is", fnc);
 				serveAdmin(connfd, curr_addr, fnc);
 				break;
 			}

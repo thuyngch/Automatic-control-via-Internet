@@ -327,13 +327,14 @@ uint8_t num_of_file_in_folder(const char *folderDir)
 	return num_of_file;
 }
 
-uint8_t real_num_of_file(const char *folderDir)
+int real_num_of_file(const char *folderDir)
 {
 	if (isEmptyFolder(folderDir)) return 0;
 	struct dirent *dp;
 	DIR *dir = opendir(folderDir);
 	if (dir == NULL) { return true; }
-	uint8_t num_of_file, buffer[64];
+	uint8_t buffer[64];
+	int num_of_file;
 	while((dp = readdir(dir)) != NULL)
 	{
 		strcpy(buffer, dp->d_name);

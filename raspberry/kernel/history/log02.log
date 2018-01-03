@@ -1,0 +1,40 @@
+--- Fri Dec  8 21:15:27 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Fri Dec  8 21:15:40 2017 ---
+[
+	{"username": "1234"},
+	{"password": "1234"},
+	{"result": "false"}
+]
+
+
+--- Fri Dec  8 21:19:59 2017 ---
+[
+	{"username": "121"},
+	{"password": "1111"},
+	{"result": "false"}
+]
+
+
+--- Fri Dec  8 21:20:13 2017 ---
+[
+	{"username": "123"},
+	{"password": "123"},
+	{"result": "true"}
+]
+
+
+--- Fri Dec  8 21:21:30 2017 ---
+[
+	{"username": "111"},
+	{"password": "111"},
+	{"result": "false"}
+]
+
+

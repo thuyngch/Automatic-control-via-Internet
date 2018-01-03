@@ -102,7 +102,7 @@ bool createNewFile_2_mode
  /*
  *	deny ".fuse_00000 .... temporary files created by Linux OS"
  */
-uint8_t real_num_of_file(const char *folderDir);
+int real_num_of_file(const char *folderDir);
 
 #endif /* FILEPROC_H_ */
 

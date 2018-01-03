@@ -21,7 +21,8 @@ void	backup(int *connfd, uint8_t addr, uint8_t fnc)
      	*buff = real_num_of_file(account_folder_dir);
       if (!buff[0]) return;
       /*send num of file in /user to PC*/
-      if(send(*connfd, buff, 1, 0) == -1) return;
+      if(send(*connfd, buff, BACKUP_BUFF_LEN, 0) == -1) return;
+	//fprintf(stderr, "%s : %d", "num of file", buff[0]);
 
       /*send file name and content of file in order*/
       struct dirent *dp;
@@ -44,6 +45,7 @@ void	backup(int *connfd, uint8_t addr, uint8_t fnc)
 			readallfile(path, buff);
 			/*send content to PC*/
 			send(*connfd, buff, BACKUP_BUFF_LEN, 0);
+			usleep(10000);
 		}
 	}	
 	free(buff);

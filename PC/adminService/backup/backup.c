@@ -27,12 +27,13 @@ void backup(int *connfd, uint8_t addr, uint8_t fnc)
 {
 	fprintf(stderr, "%s\n", "> backup service starting ...");
 	uint8_t *buff = (uint8_t*) malloc(ADMIN_BUFF_LEN);
-	if(!recv(*connfd, buff, 1, 0))
+	if(!recv(*connfd, buff, ADMIN_BUFF_LEN, 0))
 	{
 		fprintf(stderr, "%s\n", "> Backup from server failed");
 		return;
 	}	
 	uint8_t num_of_file = *buff;  //num of file in database
+	fprintf(stderr, "%s : %d\n", "rev", *buff);
 
 	/*create an empty folder on admin PCto store databases*/
 	emptyFolder(account_folder_dir);	//remove all existing files in accounts/
@@ -42,7 +43,6 @@ void backup(int *connfd, uint8_t addr, uint8_t fnc)
 	{
 		/*file name*/
 		if(!recv(*connfd, buff, ADMIN_BUFF_LEN, 0)) return;
-
 		/*create file path*/
 		adaptPath(account_folder_dir, buff);
 		FILE *file = fopen(buff, "w");
