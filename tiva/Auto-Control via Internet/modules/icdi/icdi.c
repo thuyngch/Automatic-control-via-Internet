@@ -10,21 +10,28 @@
 
 
 /******************************************************************************
- *	Public
+ *	Private
  *****************************************************************************/
-bool flgICDI;
-char buff[256];
+/*
+ *  Function:
+ *
+ *  Input   :
+ *
+ *  Output  :
+ */
+
+//-----------------------------------------------------------------------------
 
 
 /******************************************************************************
- *	Function
+ *	Public
  *****************************************************************************/
 /*
- *  Function:   Setup ICDI module.
+ *  Function:
  *
- *  Input   :   (void)
+ *  Input   :
  *
- *  Output  :   (bool) False if there is no error, True if not.
+ *  Output  :
  */
 bool icdiSetup()
 {
@@ -32,18 +39,18 @@ bool icdiSetup()
     uartSetup(ui32ClkFreq, ICDI_MODULE, 115200, UART_INT_RT | UART_INT_RX);
 
     /* Notify */
-    icdiSendStr("\r\n>>> [ICDI] module is enabled.\r\n");
+    icdiSendStr(">>> [ICDI] module is enabled.\n");
 
     /* Return */
     return false;
 }
 //-----------------------------------------------------------------------------
 /*
- *  Function:   Send a character to Terminal through UART_ICDI.
+ *  Function:
  *
- *  Input   :   ch: The character that will be sent.
+ *  Input   :
  *
- *  Output  :   (void).
+ *  Output  :
  */
 void icdiSendChar(char ch)
 {
@@ -51,11 +58,11 @@ void icdiSendChar(char ch)
 }
 //-----------------------------------------------------------------------------
 /*
- *  Function:   Send a string to Terminal through UART_ICDI.
+ *  Function:
  *
- *  Input   :   str: The string that will be sent.
+ *  Input   :
  *
- *  Output  :   (void)
+ *  Output  :
  */
 void icdiSendStr(char *str)
 {
@@ -63,12 +70,11 @@ void icdiSendStr(char *str)
 }
 //-----------------------------------------------------------------------------
 /*
- *  Function:   Send an array to Terminal through UART_ICDI.
+ *  Function:
  *
- *  Input   :   arr: The array that will be sent.
- *              len: Lenght of the array.
+ *  Input   :
  *
- *  Output  :   (void)
+ *  Output  :
  */
 void icdiSendArr(uint8_t arr[], uint16_t len)
 {
@@ -76,22 +82,28 @@ void icdiSendArr(uint8_t arr[], uint16_t len)
 }
 //-----------------------------------------------------------------------------
 /*
- *  Function:   UART_ICDI interrupt service routine.
+ *  Function:
  *
- *  Input   :   (void)
+ *  Input   :
  *
- *  Output  :   (void)
+ *  Output  :
  */
 void UART0_Handler()
 {
     /* Clear interrupt */
-    UARTIntClear(ICDI_MODULE, UART_INT_RX | UART_INT_RT);
+    UARTIntClear(WIFI_MODULE, UART_INT_RX | UART_INT_RT);
 
-    /* Read received data */
-    uint8_t ch = uartGetChar(ICDI_MODULE);
-
-    /* Redirect data to ESP8266 */
-    uartSendChar(WIFI_MODULE, ch);
+    /* Redirect received data to ESP8266 */
+    uartSendChar(WIFI_MODULE, uartGetChar(ICDI_MODULE));
 }
+//-----------------------------------------------------------------------------
+/*
+ *  Function:
+ *
+ *  Input   :
+ *
+ *  Output  :
+ */
 
+//-----------------------------------------------------------------------------
 

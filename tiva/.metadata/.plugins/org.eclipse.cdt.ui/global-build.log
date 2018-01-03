@@ -1,0 +1,17 @@
+
+**** Build of configuration Debug for project Auto-Control via Internet ****
+
+/home/chinhthuy/ti/ccsv7/utils/bin/gmake -k -j 4 all -O 
+Building file: ../system/tm4c1294ncpdt_startup_ccs.c
+Invoking: ARM Compiler
+"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="/home/chinhthuy/Dropbox/ws/github/Automatic-control-via-Internet/tiva/Auto-Control via Internet" --include_path="/home/chinhthuy/ti/Tivaware" --include_path="/home/chinhthuy/Dropbox/ws/ccs/TM4C1294NCPDT/lib/version 1.0.1/driver" --include_path="/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/include" --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="system/tm4c1294ncpdt_startup_ccs.d" --obj_directory="system"  "../system/tm4c1294ncpdt_startup_ccs.c"
+Finished building: ../system/tm4c1294ncpdt_startup_ccs.c
+ 
+Building target: Auto-Control via Internet.out
+Invoking: ARM Linker
+"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Auto-Control via Internet.map" --heap_size=0 --stack_size=1024 -i"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/lib" -i"/home/chinhthuy/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.3.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Auto-Control via Internet_linkInfo.xml" --rom_model -o "Auto-Control via Internet.out" "./main.obj" "./lib/CLK.1.0.1.obj" "./lib/GPIO.1.0.1.obj" "./lib/LAUNCHPAD.1.0.1.obj" "./lib/TIMER.1.0.1.obj" "./lib/UART.1.0.1.obj" "./lib/uartstdio.obj" "./modules/actuator/actuator.obj" "./modules/icdi/icdi.obj" "./modules/keypad/keypad.obj" "./modules/lcd/lcd.obj" "./modules/wifi/esp.obj" "./modules/wifi/frame.obj" "./modules/wifi/wifi.obj" "./system/system.obj" "./system/tm4c1294ncpdt_startup_ccs.obj" "/home/chinhthuy/ti/Tivaware/driverlib/ccs/Debug/driverlib.lib" "../system/tm4c1294ncpdt.cmd"  -llibc.a 
+<Linking>
+Finished building target: Auto-Control via Internet.out
+ 
+
+**** Build Finished ****

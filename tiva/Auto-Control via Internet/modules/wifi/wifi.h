@@ -13,14 +13,13 @@
 #include <stdbool.h>
 
 /* Driver */
-#include "../../lib/GPIO.1.0.1.h"
-#include "../../lib/UART.1.0.1.h"
-#include "../../lib/TIMER.1.0.1.h"
+#include <GPIO.1.0.1.h>
+#include <UART.1.0.1.h>
+#include <TIMER.1.0.1.h>
 
 /* Project */
 #include "../pin_def.h"
 #include "../icdi/icdi.h"
-#include "../lcd/lcd.h"
 #include "esp.h"
 #include "frame.h"
 
@@ -40,11 +39,8 @@
 #define WIFI_TIMEOUT            1200000
 
 /* IP address and Port of the server */
-#define WIFI_SERVER_IP          "113.172.178.10"
+#define WIFI_SERVER_IP          "192.168.100.19"
 #define WIFI_SERVER_PORT        8000
-
-/* Max try */
-#define WIFI_MAX_TRY            6
 
 
 /******************************************************************************
@@ -54,21 +50,6 @@
  *  Setup [WiFi] module.
  */
 bool wifiSetup();
-
-/*
- *  Send a data package.
- */
-bool wifiCheckServerConnection();
-
-/*
- *  Send a data package.
- */
-void wifiConnectServer();
-
-/*
- *  Disconnect from server.
- */
-void wifiDisconnectServer();
 
 /*
  *  Send a data package.
@@ -96,11 +77,9 @@ void TIMER0A_Handler();
  *****************************************************************************/
 static void espSetupProtocol();
 static bool wifiCheckATCmdComplete(char* strCheck);
-static int wifiCheckATCmdCompleteRobust(char* strMain, char *strSub);
 static void wifiStartTimerCount(uint32_t timeout);
 static void wifiStopTimerCount(void);
 static uint8_t wifiClearBuffer(uint8_t buff[], uint8_t len, uint8_t start);
-static void wifiRefreshBuffer(uint8_t buff[], uint8_t len);
 
 
 #endif	/* WIFI_H_ */
