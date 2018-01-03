@@ -1,0 +1,2 @@
+sudo cp /usr/local/lib/libjansson.so.4 /usr/lib/libjansson.so.4
+after installing

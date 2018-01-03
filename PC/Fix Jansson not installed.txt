@@ -1,0 +1,8 @@
+https://askubuntu.com/questions/625523/libtool-installed-but-not-on-path-after-installation
+
+
+https://stackoverflow.com/questions/33278928/how-to-overcome-aclocal-1-15-is-missing-on-your-system-warning-when-compilin
+
+https://unix.stackexchange.com/questions/18673/some-m4-macros-dont-seem-to-be-defined
+
+https://stackoverflow.com/questions/3096989/libtool-version-mismatch-error
