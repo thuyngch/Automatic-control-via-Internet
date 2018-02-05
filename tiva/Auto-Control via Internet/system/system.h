@@ -1,7 +1,8 @@
 /*
- *	Author	: Nguyen Chinh Thuy.
- *	Date	: 04/09/2017.
- *	Version	: 1.0.1.
+ *  Author      : Thuy Nguyen-Chinh.
+ *  Date        : Sep 04, 2017
+ *  Description : This file is responsible for initializing the whole of system.
+ *  Version     : 1.0.1.
  */
 #ifndef	SYSTEM_H_
 #define	SYSTEM_H_
@@ -13,10 +14,10 @@
 #include <stdbool.h>
 
 /* Driver */
-#include <GPIO.1.0.1.h>
-#include <CLK.1.0.1.h>
-#include <UART.1.0.1.h>
-#include <TIMER.1.0.1.h>
+#include "../lib/GPIO.1.0.1.h"
+#include "../lib/CLK.1.0.1.h"
+#include "../lib/UART.1.0.1.h"
+#include "../lib/TIMER.1.0.1.h"
 
 /* Project */
 #include "../modules/pin_def.h"
@@ -25,6 +26,7 @@
 #include "../modules/keypad/keypad.h"
 #include "../modules/lcd/lcd.h"
 #include "../modules/wifi/wifi.h"
+#include "../modules/account/account.h"
 
 
 /******************************************************************************

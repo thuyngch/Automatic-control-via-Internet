@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include <GPIO.1.0.1.h>
+#include "../../lib/GPIO.1.0.1.h"
 
 #include "../pin_def.h"
 #include "../icdi/icdi.h"
@@ -20,6 +20,11 @@
 /******************************************************************************
  *	Definition
  *****************************************************************************/
+/* Sweep cycle */
+#define KEYPAD_SWEEP_CYCLE      15      // ms
+
+
+//-----------------------------------------------------------------------------
 /* Enum of Button */
 typedef enum
 {
@@ -45,8 +50,8 @@ typedef enum
 
 //-----------------------------------------------------------------------------
 /* Available interrupt */
-extern  bool    flgBtnInt;
-extern  t_KpBtn readBtn;
+extern  bool    flgBtnInt;      // Indicate whether a button is pressed
+extern  t_KpBtn readBtn;        // Which button is pressed
 
 
 /******************************************************************************
@@ -58,16 +63,18 @@ bool kpSetup();
 /* Sweep */
 void kpSweep();
 
-/* Read button */
-t_KpBtn kpReadBtnFromISR();
-
-/* Interrupt */
-void GPIO_PK_Handler(void);
+/* Sweep */
+bool kpCheck();
 
 
 /******************************************************************************
  *	Private
  *****************************************************************************/
+/* Read button */
+static t_KpBtn kpReadBtn();
+
+/* Print read button into Terminal through UART0 */
+static void kpPrintReadBtn();
 
 
 #endif	/* KEYPAD_H_ */

@@ -7,6 +7,7 @@
  *	Include
  *****************************************************************************/
 #include "wifi.h"
+#include "../ui/ui.h"
 
 
 /******************************************************************************
@@ -16,11 +17,16 @@
 typedef struct
 {
     unsigned Null       : 1;    // Meet '\0' character or not?
-    unsigned isSetup    : 1;    // In the Setup progress.
+    unsigned intMode    : 2;    // In the Setup progress.
     unsigned flgUartInt : 1;    // UART3 interrupt flag.
 } s_regstate;
 
- s_regstate  sRegState;
+s_regstate  sRegState;
+//-----------------------------------------------------------------------------
+/* Int mode */
+#define WIFI_INT_MODE_NONE      0
+#define WIFI_INT_MODE_SETUP     1
+#define WIFI_INT_MODE_DATA      2
 //-----------------------------------------------------------------------------
 /* Buffer */
 uint8_t     buffCount;
@@ -48,7 +54,8 @@ static void espSetupProtocol(uint32_t timeout)
         wifiStartTimerCount(timeout);
 
     /* Connect to Access-Point */
-    espConnectWifi("Hoi-gay-kin-tang-8", "lebaloc8197");
+    espConnectWifi("THE", "00001000");
+    // espConnectWifi("P819", "lebaloc8194");
     wifiStartTimerCount(timeout);
     while(!wifiCheckATCmdComplete("OK"))
         wifiStartTimerCount(timeout);
@@ -66,16 +73,16 @@ static void espSetupProtocol(uint32_t timeout)
 //        wifiStartTimerCount(timeout);
 
     /* Connect to the server */
-    espConnectTCP(WIFI_SERVER_IP, WIFI_SERVER_PORT);
-    wifiStartTimerCount(timeout);
-    while(!wifiCheckATCmdComplete("OK"))
-        wifiStartTimerCount(timeout);
+//    espConnectTCP(WIFI_SERVER_IP, WIFI_SERVER_PORT);
+//    wifiStartTimerCount(timeout);
+//    while(!wifiCheckATCmdComplete("OK"))
+//        wifiStartTimerCount(timeout);
 
     /* Get IP address of ESP8266 */
-    espGetIP();
-    wifiStartTimerCount(timeout);
-    while(!wifiCheckATCmdComplete("OK"))
-        wifiStartTimerCount(timeout);
+//    espGetIP();
+//    wifiStartTimerCount(timeout);
+//    while(!wifiCheckATCmdComplete("OK"))
+//        wifiStartTimerCount(timeout);
 }
 //-----------------------------------------------------------------------------
 /*
@@ -83,7 +90,7 @@ static void espSetupProtocol(uint32_t timeout)
  *
  *  Input   :
  *
- *  Output  :   (bool) True of matched, False if not.
+ *  Output  :   (bool) True if matched, False if not.
  */
 static bool wifiCheckATCmdComplete(char* strCheck)
 {
@@ -109,6 +116,50 @@ DO_AGAIN:
 
     /* Return */
     return (bool)ch;
+}
+//-----------------------------------------------------------------------------
+/*
+ *  Function:
+ *
+ *  Input   :
+ *
+ *  Output  :   1 if matched strMain, -1 if matched strSub, 0 if not matched.
+ */
+static int wifiCheckATCmdCompleteRobust(char* strMain, char *strSub)
+{
+    /* Declare */
+    char *ch;
+    int res;
+    uint8_t pos = 0;
+
+    /* Wait */
+    while(!sRegState.Null);                 // While unless matching '\0'
+    wifiStopTimerCount();                   // Stop Timer count
+    sRegState.Null = false;                 // Reset [Null] field
+
+    /* Find for string */
+DO_AGAIN:
+    ch = strstr((char*)(wifiBuff + pos), strMain);
+    if(ch == NULL)
+    {
+        ch = strstr((char*)(wifiBuff + pos), strSub);
+        if(ch == NULL)
+            res = 0;
+        else
+            res = -1;
+    }
+    else
+        res = 1;
+
+    /* Reset */
+    pos = wifiClearBuffer(wifiBuff, buffCount, pos);
+    if(pos >= buffCount)
+        buffCount = 0;
+    else
+        goto DO_AGAIN;
+
+    /* Return */
+    return res;
 }
 //-----------------------------------------------------------------------------
 /*
@@ -161,8 +212,12 @@ static uint8_t wifiClearBuffer(uint8_t buff[], uint8_t len, uint8_t start)
  *
  *  Output  :
  */
-
-//-----------------------------------------------------------------------------
+static void wifiRefreshBuffer(uint8_t buff[], uint8_t len)
+{
+    uint8_t i;
+    for(i = 0; i < len; i++)
+        buff[i] = 0;
+}
 
 
 /******************************************************************************
@@ -177,11 +232,15 @@ static uint8_t wifiClearBuffer(uint8_t buff[], uint8_t len, uint8_t start)
  */
 bool wifiSetup()
 {
+    /* Print state into screen */
+    lcdChangeLine(1);
+    lcdDisplay("Connect to WiFi ");
+
 	/* GPIO setup */
 	gpioOutputSetup(WIFI_PORT_CTL, WIFI_PIN_RST | WIFI_PIN_EN);
 
 	/* UART setup */
-    sRegState.isSetup = true;
+    sRegState.intMode = WIFI_INT_MODE_SETUP;
     uartSetup(ui32ClkFreq, WIFI_MODULE, 115200, UART_INT_RT | UART_INT_RX);
 
     /* Setup timer */
@@ -189,13 +248,141 @@ bool wifiSetup()
 	
 	/* ESP8266 setup */
     espSetupProtocol(WIFI_TIMEOUT);
+    sRegState.intMode = WIFI_INT_MODE_NONE;
+    sRegState.flgUartInt = false;
 
 	/* Notify */
-	icdiSendStr(">>> [WiFi] module is enabled.\n");
+	icdiSendStr("\r\n>>> [WiFi] module is enabled.\r\n");
+    lcdChangeLine(1);
+    lcdDisplay("WiFi connected  ");
 
 	/* If no error, return false */
-    sRegState.isSetup = false;
 	return false;
+}
+//-----------------------------------------------------------------------------
+/*
+ *  Function:   Check whether ESP8266 is connected with the server.
+ *
+ *  Input   :   (void)
+ *
+ *  Output  :   (bool) True if connection has been established.
+ */
+bool wifiCheckServerConnection()
+{
+    /* Declare */
+    char str[15];
+    uint8_t tmp;
+
+    /* Setup interrupt mode */
+    tmp = sRegState.intMode;
+    sRegState.intMode = WIFI_INT_MODE_DATA;
+
+    /* Send AT command */
+    strcpy(str, "AT+CIPSTATUS\r\n");
+    uartSendStr(WIFI_MODULE, str);
+
+    /* Analyze the received data */
+    while(1)
+    {
+        while(!sRegState.flgUartInt);
+        sRegState.flgUartInt = false;
+        if((wifiBuff[buffCount-7]=='4'  || wifiBuff[buffCount-7]=='5') &&
+            wifiBuff[buffCount-6]=='\r' && wifiBuff[buffCount-5]=='\n' &&
+            wifiBuff[buffCount-4]=='\r' && wifiBuff[buffCount-3]=='\n' &&
+            wifiBuff[buffCount-2]=='O'  && wifiBuff[buffCount-1]=='K')
+        {
+            sRegState.intMode = tmp;
+            wifiRefreshBuffer(wifiBuff, 255);
+            buffCount = 0;
+            return false;
+        }
+        if(wifiBuff[buffCount-7]=='3'  &&
+           wifiBuff[buffCount-6]=='\r' && wifiBuff[buffCount-5]=='\n' &&
+           wifiBuff[buffCount-4]=='\r' && wifiBuff[buffCount-3]=='\n' &&
+           wifiBuff[buffCount-2]=='O'  && wifiBuff[buffCount-1]=='K')
+        {
+            sRegState.intMode = tmp;
+            wifiRefreshBuffer(wifiBuff, 255);
+            buffCount = 0;
+            return true;
+        }
+    }
+}
+//-----------------------------------------------------------------------------
+/*
+ *  Function:   Connect to server
+ *
+ *  Input   :   (void)
+ *
+ *  Output  :   (void)
+ */
+void wifiConnectServer()
+{
+    /* Declare */
+    int8_t tmp, false_count = 0;
+
+    /* Select interrupt mode */
+    sRegState.intMode = WIFI_INT_MODE_SETUP;
+    gpioLEDState(3, 1);
+
+    /* Try to connect to the server */
+    while(1)
+    {
+        //-Check the connection with server-//
+        if(wifiCheckServerConnection())
+            break;
+
+        //-Connect to the server-//
+        espConnectTCP(WIFI_SERVER_IP, WIFI_SERVER_PORT);
+        wifiStartTimerCount(WIFI_TIMEOUT);
+        while(!(tmp = wifiCheckATCmdCompleteRobust("OK", "ERROR")))
+            wifiStartTimerCount(WIFI_TIMEOUT);
+        if(tmp == 1)
+            break;
+        if(tmp == -1)
+        {
+            if(++false_count == WIFI_MAX_TRY)
+            {
+                lcdClearScreen();
+                lcdDisplay("Connection fail");
+                clkDelayMs(1000);
+                lcdClearScreen();
+                lcdDisplay("Check the server");
+                lcdChangeLine(1);
+                lcdDisplay("Then reset KIT");
+                while(1);
+            }
+            clkDelayMs(2000);
+        }
+    }
+
+    /* Close interrupt mode */
+    gpioLEDState(3, 0);
+    sRegState.intMode = WIFI_INT_MODE_NONE;
+}
+//-----------------------------------------------------------------------------
+/*
+ *  Function: Disconnect from the server.
+ *
+ *  Input   : (void)
+ *
+ *  Output  : (void)
+ */
+void wifiDisconnectServer()
+{
+    /* Send command to disconnect from the server */
+    espDisconnectTCP();
+
+    /* Wait for disconnection */
+//    wifiRefreshBuffer(wifiBuff, 255);
+//    buffCount = 0;
+//    sRegState.flgUartInt = WIFI_INT_MODE_SETUP;
+//
+//    wifiStartTimerCount(WIFI_TIMEOUT);
+//    while(!wifiCheckATCmdComplete("OK"))
+//        wifiStartTimerCount(WIFI_TIMEOUT);
+//
+//    sRegState.flgUartInt = WIFI_INT_MODE_NONE;
 }
 //-----------------------------------------------------------------------------
 /*
@@ -208,7 +395,7 @@ bool wifiSetup()
 void wifiSendData(char *usr, char *pass)
 {
     /* Declare */
-    uint8_t frame[30];
+    uint8_t frame[8 + 2*UI_LEN];
     uint8_t data[20];
     uint16_t framelen;
 
@@ -219,7 +406,11 @@ void wifiSendData(char *usr, char *pass)
                 strlen(usr)+strlen(pass)+1, data, &framelen, frame);
 
     /* Send */
+    sprintf((char*)data, "AT+CIPSEND=%d\r\n", framelen);
+    uartSendStr(WIFI_MODULE, (char*)data);
+    clkDelayMs(10);
     uartSendArr(WIFI_MODULE, frame, framelen);
+    sRegState.flgUartInt = false;
 }
 //-----------------------------------------------------------------------------
 /*
@@ -237,6 +428,7 @@ bool wifiRecData()
     uint8_t data[5];
 
     /* Wait for received data */
+    sRegState.intMode = WIFI_INT_MODE_DATA;
 WAIT:
     while(!sRegState.flgUartInt);
     sRegState.flgUartInt = false;
@@ -249,14 +441,25 @@ WAIT:
             if(num==1)
             {
                 if(data[0])
+                {
+                    sRegState.intMode = WIFI_INT_MODE_NONE;
                     return true;
+                }
                 else
+                {
+                    sRegState.intMode = WIFI_INT_MODE_NONE;
                     return false;
+                }
             }
         }
+        else
+            goto WAIT;
     }
     else
         goto WAIT;
+
+    /* Return */
+    sRegState.intMode = WIFI_INT_MODE_NONE;
     return false;
 }
 //-----------------------------------------------------------------------------
@@ -276,23 +479,26 @@ void UART3_Handler(void)
     UARTIntClear(WIFI_MODULE, UART_INT_RX | UART_INT_RT);
     sRegState.flgUartInt = true;
 
-    /* Send received data into ICDI */
+    /* Read received data */
     rec = uartGetChar(WIFI_MODULE);
     icdiSendChar(rec);
 
-    /* Setup progress */
-    if(sRegState.isSetup)
+    /* Interrupt mode */
+    switch(sRegState.intMode)
     {
+    //-Setup progress-//
+    case WIFI_INT_MODE_SETUP:
         wifiBuff[buffCount] = rec;
         if(wifiBuff[buffCount++] == '\0')
             sRegState.Null = true;
         else
             sRegState.Null = false;
-    }
-
-    /* Serving progress */
-    else
+        break;
+    //-Read received data from the server-//
+    case WIFI_INT_MODE_DATA:
         wifiBuff[buffCount++] = rec;
+        break;
+    }
 }
 //-----------------------------------------------------------------------------
 /*

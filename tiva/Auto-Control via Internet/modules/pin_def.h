@@ -8,7 +8,7 @@
 /******************************************************************************
  *	Include
  *****************************************************************************/
-#include "LAUNCHPAD.1.0.1.h"
+#include "../lib/LAUNCHPAD.1.0.1.h"
 
 
 /******************************************************************************
@@ -39,7 +39,11 @@
                          KP_PIN_OUT)
 //-----------------------------------------------------------------------------
 /* LCD */
-
+#define LCD_PORT_CTRL   GPIO_PORT_A
+#define LCD_PORT_DATA   GPIO_PORT_B
+#define LCD_PIN_RS      GPIO_PIN_7
+#define LCD_PIN_EN      GPIO_PIN_6
+#define LCD_OFFSET      2
 //-----------------------------------------------------------------------------
 /* WiFi */
 #define	WIFI_MODULE		UART3
@@ -59,8 +63,7 @@
 /* Actuator */
 #define ACT_MODULE      GPIO_PORT_LED_12
 #define ACT_PORT        GPIO_PORT_LED_12
-#define ACT_PIN_1       GPIO_PIN_LED_1
-#define ACT_PIN_2       GPIO_PIN_LED_2
+#define ACT_PIN         GPIO_PIN_LED_1
 //-----------------------------------------------------------------------------
 /* ICDI */
 #define ICDI_MODULE     UART_ICDI

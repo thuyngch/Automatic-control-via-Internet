@@ -1,7 +1,8 @@
 /*
- *	Author	: Nguyen Chinh Thuy.
- *	Date	: 04/09/2017.
- *	Version	: 1.0.1.
+ *	Author      : Thuy Nguyen-Chinh.
+ *	Date        : Sep 04, 2017
+ *	Description : This is the main file of the project.
+ *	Version	    : 1.0.1.
  */
 /******************************************************************************
  *  Include
@@ -9,11 +10,7 @@
 /* Project */
 #include "modules/pin_def.h"
 #include "system/system.h"
-
-
-/******************************************************************************
- *  Definition
- *****************************************************************************/
+#include "modules/ui/ui.h"
 
 
 /******************************************************************************
@@ -27,8 +24,16 @@ void main()
     /* Serve */
     while(1)
     {
+        /* Idle: Toggle LED */
         actIdle();
-        clkDelayMs(1000);
+        clkDelayMs(10);
+
+        /* Sweep keypad */
+        kpSweep();
+        flgBtnInt = kpCheck();
+
+        /* User interface */
+        uiServing();
     }
 }
 

@@ -4,7 +4,7 @@
 //
 // Copyright (c) 2011-2014 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
-// 
+//
 // Software License Agreement
 //
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -24,7 +24,6 @@
 
 #include <stdint.h>
 #include "../modules/wifi/wifi.h"
-#include "../modules/keypad/keypad.h"
 
 //*****************************************************************************
 //
@@ -137,7 +136,7 @@ void (* const g_pfnVectors[])(void) =
     IntDefaultHandler,                      // ADC1 Sequence 3
     IntDefaultHandler,                      // External Bus Interface 0
     IntDefaultHandler,                      // GPIO Port J
-    GPIO_PK_Handler,        // GPIO Port K
+    IntDefaultHandler,                      // GPIO Port K
     IntDefaultHandler,                      // GPIO Port L
     IntDefaultHandler,                      // SSI2 Rx and Tx
     IntDefaultHandler,                      // SSI3 Rx and Tx
@@ -254,7 +253,7 @@ FaultISR(void)
     //
     // Enter an infinite loop.
     //
-    icdiSendStr("FaultISR");
+    icdiSendStr("\r\n>>> FaultISR\r\n");
     while(1)
     {
     }
