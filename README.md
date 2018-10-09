@@ -1,8 +1,14 @@
-# **Automatic-Control-via-Internet**
+# **Automatic Control via Internet**
 This project is implemented for my class assignment of Embedded System Design (ESD). I and my team has developed some versions for other subjects.
-
+### Keywords: `Raspberry Pi, TivaC, Multi thread, Linux, Socket, JSON`
+----
 ## Description
-This project simulated a real system that is made up of one sever (cloud database) and clients. Clients have to login by giving their delivered username and password and these info will be sent to server, afterwards clients will recieve the login result. The server has its own administrator having rights to shutdown the server, backup and modify the database and also see the history.
+This project simulated a real system that is made up of one sever (cloud database) and clients. Clients have to login by giving their delivered username and password and these info will be sent to server, afterwards clients will recieve the login result. The server has its own administrator having rights to shutdown the server, backup and modify the database and also see the history. Pictures below give you the overview of our system and architecture.
+
+<p align="center">
+<img src="Document/img/System Partitioning.png" height="200" width="700" title="System partitions">
+<img src="Document/img/HW Block Diagram.png"  height="300" width="700" title="bottom">
+</p>
 
 ## Getting Started
 These instructions will get you a copy of the project up and you can develop it for further purposes. See deployment for notes on how to deploy the project on a live system.
@@ -38,7 +44,15 @@ At first, you should remotely use ssh on one PC to run the program on server by 
 
 After that, you run the program on TivaC129. At this time, you can run program on PC and it can be done simultaneously with TivaC129. Enter PC folder and hit ```./pc.sh```, but you should keep in mind that changing the IP address to raspberry's one in ```pc.sh``` file first.
 
-## Team members
+## Some results
+<p align="center">
+<img src="Document/img/board.png" height="500" width="450" title="System partitions">
+<p align="center">
+<img src="Document/img/login.png" height="300" width="700" title="System partitions">
+<img src="Document/img/service.png"  height="300" width="700" title="bottom">
+</p>
+
+## Authors
 
 * **Le Van Hoang Phuong** - **Leader**, *Operating Platform Development*, *Cloud's Functions Development*
 * **Nguyen Chinh Thuy** - *Connecting Architecture*, *Data Transmission*, *Firmware Development*
